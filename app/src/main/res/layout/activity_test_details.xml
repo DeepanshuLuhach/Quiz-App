@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.deepanshu.quiz.TestDetails">
+
+
+    <EditText
+        android:id="@+id/et_testName"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Test Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/et_topic"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/et_testName"
+        android:layout_below="@+id/et_testName"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Topic"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/et_duration"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Duration in hours"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/et_topic"
+        android:layout_alignStart="@+id/et_topic" />
+
+    <Button
+        android:id="@+id/btn_saveTest"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Save"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/et_duration" />
+
+    <Button
+        android:id="@+id/btn_cancelTest"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Cancel"
+        android:layout_alignBaseline="@+id/btn_saveTest"
+        android:layout_alignBottom="@+id/btn_saveTest"
+        android:layout_alignStart="@+id/spinner" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="25dp"
+        android:layout_above="@+id/btn_saveTest"
+        android:layout_alignEnd="@+id/chk_OnlineStatus" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="Select Question Bank :"
+        android:layout_alignBottom="@+id/spinner"
+        android:layout_alignStart="@+id/btn_saveTest"
+        android:layout_marginBottom="11dp" />
+
+    <CheckBox
+        android:id="@+id/chk_OnlineStatus"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/et_duration"
+        android:layout_below="@+id/et_duration"
+        android:layout_marginTop="30dp"
+        android:textSize="18sp"
+        android:text="Start Now" />
+
+
+</RelativeLayout>

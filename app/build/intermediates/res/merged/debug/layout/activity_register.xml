@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.deepanshu.quiz.Register">
+
+    <EditText
+        android:id="@+id/etname"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Name"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/etemail" />
+
+    <EditText
+        android:id="@+id/etemail"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/etname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:hint="email"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/etpass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/etemail"
+        android:layout_centerHorizontal="true"
+        android:hint="password"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/etpass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="Register" />
+
+</RelativeLayout>

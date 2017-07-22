@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.deepanshu.quiz.MainActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Main Activity You just Logged in"
+        android:layout_margin="20dp"
+        android:textSize="30sp"
+        android:id="@+id/display_user"
+
+        />
+
+    <Button
+        android:id="@+id/btn_createQB"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="Create Question Bank"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/display_user"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btn_editQB"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="Edit Question Bank"
+        android:layout_below="@+id/btn_createQB"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        />
+
+    <Button
+        android:id="@+id/btn_createTest"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="Create Test"
+        android:layout_below="@+id/btn_editQB"
+        android:layout_alignStart="@+id/btn_editQB"
+        android:layout_marginBottom="30dp"
+
+        />
+
+    <Button
+        android:id="@+id/btn_viewTest"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="View Test"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@+id/btn_createTest"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
