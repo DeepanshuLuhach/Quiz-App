@@ -48,12 +48,21 @@ public class TestDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SaveTestTask s = new SaveTestTask();
-                s.execute(mname.getText().toString(),mtopic.getText().toString(),mduration.getText().toString());
+                Check_connectivity check = new Check_connectivity(TestDetails.this);
+                if(check.getInternetStatus())
+                {
+                    SaveTestTask s = new SaveTestTask();
+                    s.execute(mname.getText().toString(),mtopic.getText().toString(),mduration.getText().toString());
 
-                Intent intent = new Intent(TestDetails.this,MainActivity.class);
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(TestDetails.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Toast.makeText(TestDetails.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                }
+
+
             }
         });
 

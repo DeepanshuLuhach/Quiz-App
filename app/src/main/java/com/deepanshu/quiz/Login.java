@@ -3,6 +3,7 @@ package com.deepanshu.quiz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,11 +43,24 @@ public class Login extends AppCompatActivity {
         mlogin = (Button) findViewById(R.id.btnlogin);
         mgoRegister = (Button) findViewById(R.id.btnGoToRegister);
 
+        Check_connectivity check = new Check_connectivity(this);
+        if(!check.getInternetStatus()){
+            Toast.makeText(Login.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+        }
+
         mlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginTask o = new loginTask();
-                o.execute(musername.getText().toString(),mpassword.getText().toString());
+
+                Check_connectivity check = new Check_connectivity(Login.this);
+                if(check.getInternetStatus())
+                {
+                    loginTask o = new loginTask();
+                    o.execute(musername.getText().toString(),mpassword.getText().toString());
+                }
+                else{
+                    Toast.makeText(Login.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                }
 
                 //Toast.makeText(Login.this,"Register here",Toast.LENGTH_LONG).show();;
             }
@@ -56,8 +70,16 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent register = new Intent(Login.this,Register.class);
-                startActivity(register);
+
+                Check_connectivity check = new Check_connectivity(Login.this);
+                if(check.getInternetStatus()){
+                    Intent register = new Intent(Login.this,Register.class);
+                    startActivity(register);
+                }
+                else{
+                    Toast.makeText(Login.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

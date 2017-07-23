@@ -32,8 +32,17 @@ public class Register extends AppCompatActivity {
         mregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RegisterTask r = new RegisterTask();
-                r.execute(mname.getText().toString(),mpassword.getText().toString(),memail.getText().toString());
+
+                Check_connectivity check = new Check_connectivity(Register.this);
+                if(check.getInternetStatus())
+                {
+                    RegisterTask r = new RegisterTask();
+                    r.execute(mname.getText().toString(),mpassword.getText().toString(),memail.getText().toString());
+                }
+                else{
+                    Toast.makeText(Register.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

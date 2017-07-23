@@ -3,6 +3,7 @@
     package="com.deepanshu.quiz">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +28,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Add_Questions" />
         <activity android:name=".TestDetails" />
-        <activity android:name=".ViewTests"></activity>
+        <activity android:name=".ViewTests" />
+        <activity android:name=".ViewQuestionBank"></activity>
     </application>
 
 </manifest>

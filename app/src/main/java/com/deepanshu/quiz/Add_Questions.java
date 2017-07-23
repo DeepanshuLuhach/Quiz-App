@@ -65,15 +65,23 @@ public class Add_Questions extends AppCompatActivity {
         madd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertTask i = new insertTask();
-                i.execute(mques.getText().toString(),mopA.getText().toString(),mopB.getText().toString(),mopC.getText().toString(),mopD.getText().toString());
-                mques.setText("");
-                mopA.setText("");
-                mopB.setText("");
-                mopC.setText("");
-                mopD.setText("");
-                startActivity(new Intent(Add_Questions.this,Add_Questions.class));
-                finish();
+
+                Check_connectivity check = new Check_connectivity(Add_Questions.this);
+                if(check.getInternetStatus())
+                {
+                    insertTask i = new insertTask();
+                    i.execute(mques.getText().toString(),mopA.getText().toString(),mopB.getText().toString(),mopC.getText().toString(),mopD.getText().toString());
+                    mques.setText("");
+                    mopA.setText("");
+                    mopB.setText("");
+                    mopC.setText("");
+                    mopD.setText("");
+                    startActivity(new Intent(Add_Questions.this,Add_Questions.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(Add_Questions.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -87,15 +95,23 @@ public class Add_Questions extends AppCompatActivity {
         msubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertTask i = new insertTask();
-                i.execute(mques.getText().toString(),mopA.getText().toString(),mopB.getText().toString(),mopC.getText().toString(),mopD.getText().toString());
 
-                sharedPreferences = getSharedPreferences(MyPREFERENCES,Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(qb_id,"0");
-                editor.apply();
-                startActivity(new Intent(Add_Questions.this,MainActivity.class));
-                finish();
+                Check_connectivity check = new Check_connectivity(Add_Questions.this);
+                if(check.getInternetStatus())
+                {
+                    insertTask i = new insertTask();
+                    i.execute(mques.getText().toString(),mopA.getText().toString(),mopB.getText().toString(),mopC.getText().toString(),mopD.getText().toString());
+
+                    sharedPreferences = getSharedPreferences(MyPREFERENCES,Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(qb_id,"0");
+                    editor.apply();
+                    startActivity(new Intent(Add_Questions.this,MainActivity.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(Add_Questions.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                }
             }
         });
 

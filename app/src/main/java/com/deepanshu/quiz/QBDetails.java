@@ -29,7 +29,6 @@ public class QBDetails extends AppCompatActivity {
     private EditText mname, mposmarks, mnegmarks;
     private Button mfinish, maddques;
     private TextView mhead;
-    ProgressBar progressBar;
 
     SharedPreferences sharedPreferences;
 
@@ -55,11 +54,19 @@ public class QBDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //save data here and go to main_Activity
-                i = 1;
-                SaveTask s = new SaveTask();
-                s.execute(mname.getText().toString(),mposmarks.getText().toString(),mnegmarks.getText().toString());
-                startActivity(new Intent(QBDetails.this, MainActivity.class));
-                finish();
+                Check_connectivity check = new Check_connectivity(QBDetails.this);
+                if(check.getInternetStatus())
+                {
+                    i = 1;
+                    SaveTask s = new SaveTask();
+                    s.execute(mname.getText().toString(),mposmarks.getText().toString(),mnegmarks.getText().toString());
+                    startActivity(new Intent(QBDetails.this, MainActivity.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(QBDetails.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                }
+
 
             }
         });
@@ -68,25 +75,34 @@ public class QBDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //save data here and go to Add_Question activity
-                i = 0;
-                SaveTask s = new SaveTask();
-                s.execute(mname.getText().toString(),mposmarks.getText().toString(),mnegmarks.getText().toString());
-                startActivity(new Intent(QBDetails.this, Add_Questions.class));
-                finish();
+
+                Check_connectivity check = new Check_connectivity(QBDetails.this);
+                if(check.getInternetStatus())
+                {
+                    i = 0;
+                    SaveTask s = new SaveTask();
+                    s.execute(mname.getText().toString(),mposmarks.getText().toString(),mnegmarks.getText().toString());
+                    startActivity(new Intent(QBDetails.this, Add_Questions.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(QBDetails.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }
 
     public class SaveTask extends AsyncTask<String,String,String>
     {
+       // ProgressDialog progressDialog = new ProgressDialog(QBDetails.this);
 
         @Override
         protected void onPreExecute() {
 
+        //   progressDialog.setMessage("Saving... Please Wait");
+        //    progressDialog.show();
             super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
-
-
         }
 
         @Override
@@ -119,8 +135,7 @@ public class QBDetails extends AppCompatActivity {
             {
                 Toast.makeText(getBaseContext(),"Error : "+s,Toast.LENGTH_LONG).show();
             }
-            progressBar.setVisibility(View.INVISIBLE);
-
+            //progressDialog.dismiss();
         }
 
         @Override
