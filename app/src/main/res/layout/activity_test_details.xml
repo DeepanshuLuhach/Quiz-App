@@ -56,25 +56,26 @@
         android:text="Cancel"
         android:layout_alignBaseline="@+id/btn_saveTest"
         android:layout_alignBottom="@+id/btn_saveTest"
-        android:layout_alignStart="@+id/spinner" />
+        android:layout_alignEnd="@+id/chk_OnlineStatus" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="100dp"
+        android:id="@+id/spinner_select_qb"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="43dp"
         android:layout_above="@+id/btn_saveTest"
-        android:layout_alignEnd="@+id/chk_OnlineStatus" />
+        android:layout_alignStart="@+id/btn_saveTest" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:text="Select Question Bank :"
         android:textSize="20sp"
         tools:text="Select Question Bank :"
-        android:layout_alignBottom="@+id/spinner"
-        android:layout_alignStart="@+id/btn_saveTest"
-        android:layout_marginBottom="11dp" />
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/spinner_select_qb"
+        android:layout_alignStart="@+id/spinner_select_qb" />
 
     <CheckBox
         android:id="@+id/chk_OnlineStatus"

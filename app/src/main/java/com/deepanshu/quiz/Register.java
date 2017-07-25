@@ -1,5 +1,6 @@
 package com.deepanshu.quiz;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import java.net.URLEncoder;
 public class Register extends AppCompatActivity {
     EditText mname,memail,mpassword;
     Button mregister;
-
+    ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +52,19 @@ public class Register extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+
             super.onPreExecute();
+            pd=new ProgressDialog(Register.this);
+            pd.setTitle("Register");
+            pd.setMessage("Registering...Please wait");
+            pd.show();
         }
 
         @Override
         protected void onPostExecute(String s) {
 
             super.onPostExecute(s);
+            pd.dismiss();
             Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
             if ("valid".equals(s.trim())){
                 Intent i = new Intent(Register.this, Login.class);

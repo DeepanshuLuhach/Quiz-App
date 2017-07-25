@@ -795,7 +795,7 @@ int id center_horizontal 0x7f0e0031
 int id center_vertical 0x7f0e0032
 int id chains 0x7f0e0017
 int id checkbox 0x7f0e0063
-int id chk_OnlineStatus 0x7f0e009e
+int id chk_OnlineStatus 0x7f0e009d
 int id chronometer 0x7f0e00c3
 int id clip_horizontal 0x7f0e003b
 int id clip_vertical 0x7f0e003c
@@ -906,8 +906,8 @@ int id snackbar_action 0x7f0e00aa
 int id snackbar_text 0x7f0e00a9
 int id snap 0x7f0e0026
 int id spacer 0x7f0e0054
-int id spinner 0x7f0e009d
 int id spinner_selectOption 0x7f0e0081
+int id spinner_select_qb 0x7f0e009e
 int id split_action_bar 0x7f0e0008
 int id spread 0x7f0e0011
 int id spread_inside 0x7f0e0014

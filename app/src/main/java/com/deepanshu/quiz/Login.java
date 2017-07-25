@@ -1,5 +1,6 @@
 package com.deepanshu.quiz;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,6 +30,7 @@ public class Login extends AppCompatActivity {
     public static final String qb_id = "question_bank_id";
     public static final String test_id = "test_id";
     SharedPreferences sharedPreferences;
+    ProgressDialog pd;
 
 
     @Override
@@ -89,20 +91,22 @@ public class Login extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+
             super.onPreExecute();
+            pd=new ProgressDialog(Login.this);
+            pd.setTitle("Login");
+            pd.setMessage("Logging You In...Please wait");
+            pd.show();
         }
 
         @Override
         protected void onPostExecute(String s) {
 
             super.onPostExecute(s);
-            if(s.trim() == null){
-                Toast.makeText(getBaseContext(),"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
-                if (!("not valid".equals(s.trim()))){
+            pd.dismiss();
+            try {
+                if (!("not valid".equals(s.trim()))) {
+                    Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(user_id, s.trim());
                     editor.apply();
@@ -110,6 +114,10 @@ public class Login extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+                Toast.makeText(getBaseContext(), "Unable to connect!!!", Toast.LENGTH_LONG).show();
             }
 
 

@@ -7,10 +7,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -30,7 +32,9 @@ public class TestDetails extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     CheckBox monlineStatus;
     int startNow = 0;
-    String qbid; //select from the spinner
+    Spinner mspinner;
+    String uid;
+    public static String qbid; //select from the spinner
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,15 @@ public class TestDetails extends AppCompatActivity {
         monlineStatus = (CheckBox) findViewById(R.id.chk_OnlineStatus);
         msave = (Button) findViewById(R.id.btn_saveTest);
         mcancel = (Button) findViewById(R.id.btn_cancelTest);
+        mspinner = (Spinner) findViewById(R.id.spinner_select_qb);
+
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        uid = sharedPreferences.getString(user_id,"0");
+
+        JsonParser_testDetails jsonParser = new JsonParser_testDetails(TestDetails.this,mspinner);
+        jsonParser.execute(uid);
+
+
 
         msave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +105,6 @@ public class TestDetails extends AppCompatActivity {
 
     public class SaveTestTask extends AsyncTask<String,String,String>
     {
-        String uid;
 
         @Override
         protected void onPreExecute() {
@@ -111,8 +123,6 @@ public class TestDetails extends AppCompatActivity {
             {
                 Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
                 if (!("not valid".equals(s.trim()))){
-                    sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-                    uid = sharedPreferences.getString(user_id,"0");
 
                 }
             }
@@ -126,10 +136,11 @@ public class TestDetails extends AppCompatActivity {
                 String name = strings[0];
                 String topic = strings[1];
                 String duration = strings[2];
+                String id = qbid;
                 String data=  URLEncoder.encode("user_id","UTF-8") + "=" +
                         URLEncoder.encode(uid,"UTF-8") + "&" +
                         URLEncoder.encode("qb_id","UTF-8") + "=" +
-                        URLEncoder.encode(qbid,"UTF-8") + "&" +
+                        URLEncoder.encode(id,"UTF-8") + "&" +
                         URLEncoder.encode("name","UTF-8") + "=" +
                         URLEncoder.encode(name,"UTF-8")+ "&" +
                         URLEncoder.encode("topic","UTF-8") + "=" +

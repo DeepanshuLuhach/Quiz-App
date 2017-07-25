@@ -3211,7 +3211,7 @@ containing a value of this type.
         public static final int center_vertical=0x7f0e0032;
         public static final int chains=0x7f0e0017;
         public static final int checkbox=0x7f0e0063;
-        public static final int chk_OnlineStatus=0x7f0e009e;
+        public static final int chk_OnlineStatus=0x7f0e009d;
         public static final int chronometer=0x7f0e00c3;
         public static final int clip_horizontal=0x7f0e003b;
         public static final int clip_vertical=0x7f0e003c;
@@ -3322,8 +3322,8 @@ containing a value of this type.
         public static final int snackbar_text=0x7f0e00a9;
         public static final int snap=0x7f0e0026;
         public static final int spacer=0x7f0e0054;
-        public static final int spinner=0x7f0e009d;
         public static final int spinner_selectOption=0x7f0e0081;
+        public static final int spinner_select_qb=0x7f0e009e;
         public static final int split_action_bar=0x7f0e0008;
         public static final int spread=0x7f0e0011;
         public static final int spread_inside=0x7f0e0014;
