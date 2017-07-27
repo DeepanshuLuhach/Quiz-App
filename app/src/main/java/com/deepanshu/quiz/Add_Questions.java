@@ -55,7 +55,7 @@ public class Add_Questions extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         quesB_id = sharedPreferences.getString(qb_id,"0");
-        if(quesB_id == "0")
+        if(quesB_id.trim() == "0")
         {
             Toast.makeText(Add_Questions.this,"Invalid reference to question bank",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Add_Questions.this,MainActivity.class));

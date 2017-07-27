@@ -20,6 +20,10 @@
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/layout/select_dialog_multichoice_material.xml"
     },
     {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/list_item.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/list_item.xml"
+    },
+    {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
         "source": "/home/deepanshu/.android/build-cache/9750efc1489a8586b03bd47e421c3dd3f8cd9514/output/res/layout/design_navigation_item_separator.xml"
     },
@@ -50,6 +54,10 @@
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_display_test.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_display_test.xml"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
@@ -138,6 +146,10 @@
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_display_qb.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_display_qb.xml"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",

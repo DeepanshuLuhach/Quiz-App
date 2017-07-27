@@ -29,7 +29,9 @@
         <activity android:name=".Add_Questions" />
         <activity android:name=".TestDetails" />
         <activity android:name=".ViewTests" />
-        <activity android:name=".ViewQuestionBank"></activity>
+        <activity android:name=".ViewQuestionBank" />
+        <activity android:name=".DisplayQB" />
+        <activity android:name=".DisplayTest"></activity>
     </application>
 
 </manifest>

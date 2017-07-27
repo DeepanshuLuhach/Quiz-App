@@ -40,6 +40,8 @@
         <activity android:name="com.deepanshu.quiz.TestDetails" />
         <activity android:name="com.deepanshu.quiz.ViewTests" />
         <activity android:name="com.deepanshu.quiz.ViewQuestionBank" />
+        <activity android:name="com.deepanshu.quiz.DisplayQB" />
+        <activity android:name="com.deepanshu.quiz.DisplayTest" />
     </application>
 
 </manifest>

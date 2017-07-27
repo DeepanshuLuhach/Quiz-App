@@ -116,15 +116,17 @@ public class TestDetails extends AppCompatActivity {
         protected void onPostExecute(String s) {
 
             super.onPostExecute(s);
-            if(s.trim() == null){
-                Toast.makeText(getBaseContext(),"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
-                if (!("not valid".equals(s.trim()))){
+            try {
+                if (s.trim() == null) {
+                    Toast.makeText(getBaseContext(), "Check your internet connectivity!!!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
+                    if (!("not valid".equals(s.trim()))) {
 
+                    }
                 }
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }
 

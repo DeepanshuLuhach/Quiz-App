@@ -31,7 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
         mcreateQB = (Button) findViewById(R.id.btn_createQB);
         mcreateTest = (Button) findViewById(R.id.btn_createTest);
+        meditQB = (Button) findViewById(R.id.btn_editQB);
+        mviewTest = (Button) findViewById(R.id.btn_viewTest);
 
+        meditQB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gb = new Intent(MainActivity.this,DisplayQB.class);
+                startActivity(gb);
+            }
+        });
         mcreateQB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
