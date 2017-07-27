@@ -1,6 +1,8 @@
 package com.deepanshu.quiz;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,19 +23,32 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.deepanshu.quiz.Login.MyPREFERENCES;
+import static com.deepanshu.quiz.Login.user_id;
+
 public class DisplayQB extends AppCompatActivity{
 
     private RecyclerView recyclerView;
     String uid;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_qb);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView_qb);
-        uid = "1";
-        DisplayTask d = new DisplayTask();
-        d.execute(uid);
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        uid = sharedPreferences.getString(user_id,"0");
+        Check_connectivity check = new Check_connectivity(DisplayQB.this);
+        if(check.getInternetStatus())
+        {
+            DisplayTask d = new DisplayTask();
+            d.execute(uid);
+        }
+        else{
+            Toast.makeText(DisplayQB.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+        }
+
 
     }
 

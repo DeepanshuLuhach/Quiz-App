@@ -41,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(gb);
             }
         });
+        mviewTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gb = new Intent(MainActivity.this,DisplayTest.class);
+                startActivity(gb);
+            }
+        });
         mcreateQB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

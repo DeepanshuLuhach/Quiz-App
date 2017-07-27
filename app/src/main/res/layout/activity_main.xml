@@ -30,7 +30,7 @@
         android:id="@+id/btn_editQB"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:text="Edit Question Bank"
+        android:text="View Question Bank"
         android:layout_below="@+id/btn_createQB"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"

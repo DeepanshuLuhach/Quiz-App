@@ -42,6 +42,7 @@
         <activity android:name="com.deepanshu.quiz.ViewQuestionBank" />
         <activity android:name="com.deepanshu.quiz.DisplayQB" />
         <activity android:name="com.deepanshu.quiz.DisplayTest" />
+        <activity android:name="com.deepanshu.quiz.DisplayTest_ListItem" />
     </application>
 
 </manifest>
