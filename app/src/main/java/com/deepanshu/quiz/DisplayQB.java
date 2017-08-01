@@ -59,7 +59,10 @@ public class DisplayQB extends AppCompatActivity{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd.setMessage("Loading");
+            pd.setTitle("Loading Question Bank set");
+            pd.setMessage("Please wait...");
+            pd.setCancelable(false);
+            pd.setCanceledOnTouchOutside(false);
             pd.show();
         }
 
@@ -88,10 +91,7 @@ public class DisplayQB extends AppCompatActivity{
 
 
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(DisplayQB.this,"Unable to fetch Data",Toast.LENGTH_SHORT).show();
-            }catch (Exception e){
+            } catch (Exception e){
                 e.printStackTrace();
                 Toast.makeText(DisplayQB.this,"Unable to fetch Data",Toast.LENGTH_SHORT).show();
             }
@@ -116,7 +116,7 @@ public class DisplayQB extends AppCompatActivity{
 
                 //READ
                 while ((line = bufferedReader.readLine()) != null) {
-                    jsonData.append(line + "\n");
+                    jsonData.append(line).append("\n");
                 }
 
                 return jsonData.toString();

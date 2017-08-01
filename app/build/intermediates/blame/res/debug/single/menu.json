@@ -2,5 +2,9 @@
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/menu/menu_user__admin.xml",
         "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/menu/menu_user__admin.xml"
+    },
+    {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/menu/menu.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/menu/menu.xml"
     }
 ]

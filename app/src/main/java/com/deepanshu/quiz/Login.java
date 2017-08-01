@@ -94,8 +94,10 @@ public class Login extends AppCompatActivity {
 
             super.onPreExecute();
             pd=new ProgressDialog(Login.this);
-            pd.setTitle("Login");
-            pd.setMessage("Logging You In...Please wait");
+            pd.setTitle("Logging In");
+            pd.setMessage("Please wait...");
+            pd.setCancelable(false);
+            pd.setCanceledOnTouchOutside(false);
             pd.show();
         }
 

@@ -12,14 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
+        <activity android:name=".Login"/>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
         <activity android:name=".Register" />
         <activity android:name=".QBDetails" />
         <activity
@@ -32,7 +32,7 @@
         <activity android:name=".ViewQuestionBank" />
         <activity android:name=".DisplayQB" />
         <activity android:name=".DisplayTest" />
-        <activity android:name=".DisplayTest_ListItem"></activity>
+        <activity android:name=".DisplayTest_ListItem" />
     </application>
 
 </manifest>
