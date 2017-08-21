@@ -31,6 +31,7 @@ public class Add_Questions extends AppCompatActivity {
     private String quesB_id;
     int flag, submitflag;
     SharedPreferences sharedPreferences;
+    String answer = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +75,15 @@ public class Add_Questions extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> options, View view, int pos, long l) {
                 selectedOption = options.getItemAtPosition(pos).toString();
-                Toast.makeText(getBaseContext(),selectedOption,Toast.LENGTH_SHORT).show();
+                setAnswer();
+                Toast.makeText(getBaseContext(),answer,Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> options) {
                 selectedOption = options.getItemAtPosition(0).toString();
-                Toast.makeText(getBaseContext(),selectedOption,Toast.LENGTH_SHORT).show();
+                setAnswer();
+                Toast.makeText(getBaseContext(),answer,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -140,6 +143,13 @@ public class Add_Questions extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setAnswer() {
+        if(selectedOption == "A") answer = mopA.getText().toString();
+        else if(selectedOption == "B") answer = mopB.getText().toString();
+        else if(selectedOption == "C") answer = mopC.getText().toString();
+        else answer = mopD.getText().toString();
     }
 
     private boolean fieldsvalidation() {
@@ -226,7 +236,7 @@ public class Add_Questions extends AppCompatActivity {
                         URLEncoder.encode("optionD","UTF-8") + "=" +
                         URLEncoder.encode(opd,"UTF-8")+ "&" +
                         URLEncoder.encode("correct","UTF-8") + "=" +
-                        URLEncoder.encode(selectedOption,"UTF-8");
+                        URLEncoder.encode(answer,"UTF-8");
 
                 URL url = new URL("https://contests.000webhostapp.com/php/add_question.php?"+data);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();

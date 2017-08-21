@@ -16,46 +16,60 @@
         android:textSize="18sp"
         android:text="Question" />
 
-    <RadioButton
-        android:id="@+id/rb_opA"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/rg_options"
+        android:layout_width="300dp"
+
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginTop="40dp"
-        android:text="Option A"
-        android:textSize="18sp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/tv_ques"
-        android:layout_alignEnd="@+id/tv_ques" />
+        android:layout_centerHorizontal="true">
+        <RadioButton
+            android:id="@+id/rb_opA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:layout_marginStart="20dp"
+            android:text="Option A"
+            android:textSize="18sp"
+            android:layout_below="@+id/tv_ques"
+            android:layout_alignEnd="@+id/tv_ques" />
 
-    <RadioButton
-        android:id="@+id/rb_opB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/rb_opA"
-        android:layout_below="@+id/rb_opA"
-        android:textSize="18sp"
-        android:layout_marginTop="25dp"
-        android:text="Option B" />
+        <RadioButton
+            android:id="@+id/rb_opB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/rb_opA"
+            android:layout_below="@+id/rb_opA"
+            android:textSize="18sp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="20dp"
+            android:text="Option B" />
 
-    <RadioButton
-        android:id="@+id/rb_opC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/rb_opB"
-        android:layout_below="@+id/rb_opB"
-        android:layout_marginTop="25dp"
-        android:textSize="18sp"
-        android:text="Option C" />
+        <RadioButton
+            android:id="@+id/rb_opC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/rb_opB"
+            android:layout_below="@+id/rb_opB"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="Option C" />
 
-    <RadioButton
-        android:id="@+id/rb_opD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/rb_opC"
-        android:layout_below="@+id/rb_opC"
-        android:layout_marginTop="25dp"
-        android:textSize="18sp"
-        android:text="Option D" />
+        <RadioButton
+            android:id="@+id/rb_opD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/rb_opC"
+            android:layout_below="@+id/rb_opC"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"
+            android:text="Option D" />
+
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/btn_next"

@@ -26,10 +26,10 @@ import java.util.ArrayList;
 
 public class StartTest extends AppCompatActivity {
 
-    TextView mtestName, mtestTopic, mDuration, mAuthorId;
+    TextView mtestName, mtestTopic, mDuration, mAuthor;
     Button mstartTest;
     int flag;
-    String qbid;
+    String qbid, mAuthorId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class StartTest extends AppCompatActivity {
         mtestName = (TextView) findViewById(R.id.tv_test_name);
         mtestTopic = (TextView) findViewById(R.id.tv_test_topic);
         mDuration = (TextView) findViewById(R.id.tv_test_duration);
-        mAuthorId = (TextView) findViewById(R.id.tv_author);
+        mAuthor = (TextView) findViewById(R.id.tv_author);
         mstartTest = (Button) findViewById(R.id.btn_start_test);
 
         Bundle bundle = getIntent().getExtras();
@@ -47,12 +47,7 @@ public class StartTest extends AppCompatActivity {
         flag = 1;
         FetchTask s = new FetchTask();
         s.execute(testId);
-        if(flag == 0)
-        {
-            Toast.makeText(StartTest.this,"Could not connect to server",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(StartTest.this,UserActivity.class));
-            finish();
-        }
+
 
         mstartTest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +55,7 @@ public class StartTest extends AppCompatActivity {
                 Check_connectivity check = new Check_connectivity(StartTest.this);
                 if(check.getInternetStatus())
                 {
-                    Intent i = new Intent(StartTest.this, StartTest.class);
+                    Intent i = new Intent(StartTest.this, Question.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("QBId",qbid );
                     i.putExtras(bundle);
@@ -116,7 +111,9 @@ public class StartTest extends AppCompatActivity {
                     name = jo.getString("DURATION");
                     mDuration.setText(name);
                     name = jo.getString("USER_ID");
-                    mAuthorId.setText(name);
+                    mAuthorId = name;
+                    name = jo.getString("name");
+                    mAuthor.setText(name);
                     qbid = jo.getString("QB_ID");
 
                 } catch (JSONException e) {
@@ -130,6 +127,12 @@ public class StartTest extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),"Error : "+s,Toast.LENGTH_LONG).show();
             }
             pd.dismiss();
+            if(flag == 0)
+            {
+                Toast.makeText(StartTest.this,"Could not connect to server",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(StartTest.this,UserActivity.class));
+                finish();
+            }
         }
 
         @Override
