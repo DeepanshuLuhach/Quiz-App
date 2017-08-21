@@ -1,5 +1,6 @@
 package com.deepanshu.quiz;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -66,10 +67,6 @@ public class TestDetails extends AppCompatActivity {
                 {
                     SaveTestTask s = new SaveTestTask();
                     s.execute(mname.getText().toString(),mtopic.getText().toString(),mduration.getText().toString());
-
-                    Intent intent = new Intent(TestDetails.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
                 }
                 else{
                     Toast.makeText(TestDetails.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
@@ -106,23 +103,33 @@ public class TestDetails extends AppCompatActivity {
     public class SaveTestTask extends AsyncTask<String,String,String>
     {
 
+        ProgressDialog pd1;
         @Override
         protected void onPreExecute() {
-
             super.onPreExecute();
+            pd1=new ProgressDialog(TestDetails.this);
+            pd1.setTitle("Creating Test");
+            pd1.setMessage("Please wait...");
+            pd1.setCancelable(false);
+            pd1.setCanceledOnTouchOutside(false);
+            System.out.println("Inside Pre-execute");
+            pd1.show();
+
         }
 
         @Override
         protected void onPostExecute(String s) {
-
             super.onPostExecute(s);
+            pd1.dismiss();
             try {
-                if (s.trim() == null) {
+                if (s.equals("not valid")) {
                     Toast.makeText(getBaseContext(), "Check your internet connectivity!!!", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
-                    if (!("not valid".equals(s.trim()))) {
-
+                    if(!("not valid".equals(s.trim()))) {
+                        Intent intent = new Intent(TestDetails.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 }
             }catch (Exception e){
@@ -160,13 +167,15 @@ public class TestDetails extends AppCompatActivity {
 
                 result = bufferedReader.readLine();
 
+                if(result == null)
+                    return "not valid";
                 return result;
 
             }catch(Exception e){
                 e.printStackTrace();
             }
 
-            return null;
+            return "not valid";
         }
     }
 }

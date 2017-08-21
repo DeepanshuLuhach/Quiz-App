@@ -1,49 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
     tools:context="com.deepanshu.quiz.MainActivity">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Main Activity You just Logged in"
-        android:layout_margin="20dp"
-        android:textSize="30sp"
-        android:id="@+id/display_user"
 
-        />
+
+    <Button
+        android:id="@+id/admin_btn"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_blue_light"
+
+        android:enabled="true"
+        android:text="Admin" />
+
+    <Button
+        android:id="@+id/switch_to_user"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="User" />
 
     <Button
         android:id="@+id/btn_createQB"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:text="Create Question Bank"
+        android:layout_below="@+id/admin_btn"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@+id/display_user"
-        android:layout_centerHorizontal="true" />
+        android:text="Create Question Bank" />
 
     <Button
         android:id="@+id/btn_editQB"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:text="View Question Bank"
         android:layout_below="@+id/btn_createQB"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        />
+        android:text="View Question Bank" />
 
     <Button
         android:id="@+id/btn_createTest"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:text="Create Test"
-        android:layout_below="@+id/btn_editQB"
         android:layout_alignStart="@+id/btn_editQB"
+        android:layout_below="@+id/btn_editQB"
         android:layout_marginBottom="30dp"
+        android:text="Create Test"
 
         />
 
@@ -51,10 +64,10 @@
         android:id="@+id/btn_viewTest"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:text="View Test"
-        android:layout_marginBottom="30dp"
         android:layout_below="@+id/btn_createTest"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="View Test" />
 
 
 </RelativeLayout>

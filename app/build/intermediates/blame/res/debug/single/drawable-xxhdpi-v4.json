@@ -40,20 +40,20 @@
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_focused_holo.9.png",
-        "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_list_focused_holo.9.png"
-    },
-    {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png",
-        "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_focused_holo.9.png",
+        "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_list_focused_holo.9.png"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/design_ic_visibility.png",
         "source": "/home/deepanshu/.android/build-cache/9750efc1489a8586b03bd47e421c3dd3f8cd9514/output/res/drawable-xxhdpi-v4/design_ic_visibility.png"
+    },
+    {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png",
+        "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_right_mtrl_light.png",
@@ -64,12 +64,12 @@
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_ic_star_half_black_36dp.png"
     },
     {
-        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png",
-        "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png",
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_popup_background_mtrl_mult.9.png",

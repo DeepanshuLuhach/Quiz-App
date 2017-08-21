@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.deepanshu.quiz.Question">
+
+
+    <TextView
+        android:id="@+id/tv_ques"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textSize="18sp"
+        android:text="Question" />
+
+    <RadioButton
+        android:id="@+id/rb_opA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="40dp"
+        android:text="Option A"
+        android:textSize="18sp"
+        android:layout_below="@+id/tv_ques"
+        android:layout_alignEnd="@+id/tv_ques" />
+
+    <RadioButton
+        android:id="@+id/rb_opB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/rb_opA"
+        android:layout_below="@+id/rb_opA"
+        android:textSize="18sp"
+        android:layout_marginTop="25dp"
+        android:text="Option B" />
+
+    <RadioButton
+        android:id="@+id/rb_opC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/rb_opB"
+        android:layout_below="@+id/rb_opB"
+        android:layout_marginTop="25dp"
+        android:textSize="18sp"
+        android:text="Option C" />
+
+    <RadioButton
+        android:id="@+id/rb_opD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/rb_opC"
+        android:layout_below="@+id/rb_opC"
+        android:layout_marginTop="25dp"
+        android:textSize="18sp"
+        android:text="Option D" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Next"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

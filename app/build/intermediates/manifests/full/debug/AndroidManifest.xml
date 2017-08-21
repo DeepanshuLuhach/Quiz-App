@@ -43,6 +43,9 @@
         <activity android:name="com.deepanshu.quiz.DisplayQB" />
         <activity android:name="com.deepanshu.quiz.DisplayTest" />
         <activity android:name="com.deepanshu.quiz.DisplayTest_ListItem" />
+        <activity android:name="com.deepanshu.quiz.UserActivity" />
+        <activity android:name="com.deepanshu.quiz.StartTest" />
+        <activity android:name="com.deepanshu.quiz.Question" />
     </application>
 
 </manifest>

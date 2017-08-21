@@ -20,27 +20,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Objects;
 
 import static com.deepanshu.quiz.Login.MyPREFERENCES;
-import static com.deepanshu.quiz.Login.qb_id;
 import static com.deepanshu.quiz.Login.user_id;
 
 public class Add_Questions extends AppCompatActivity {
 
-    private Spinner spinner;
     private String selectedOption;
     private EditText mques,mopA,mopB,mopC,mopD;
     private String quesB_id;
-    int flag;
-    Context context;
+    int flag, submitflag;
     SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__questions);
-        context = this.getApplicationContext();
 
         //Saving question Bank details
         Bundle bundle = getIntent().getExtras();
@@ -48,6 +43,7 @@ public class Add_Questions extends AppCompatActivity {
         String posMarks = bundle.getString("posM");
         String negMarks = bundle.getString("negM");
         flag = 1;
+        submitflag = 0;
         SaveTask s = new SaveTask();
         s.execute(qbName, posMarks, negMarks);
         if(flag == 0)
@@ -63,36 +59,56 @@ public class Add_Questions extends AppCompatActivity {
         mopC = (EditText) findViewById(R.id.et_optionC);
         mopD = (EditText) findViewById(R.id.et_optionD);
         Button madd = (Button) findViewById(R.id.btn_add_question);
+        ///madd.setEnabled(false);
         Button mcancel = (Button) findViewById(R.id.btn_cancel_question);
         Button msubmit = (Button) findViewById(R.id.btn_submitquestionbnk);
 
         //Populating Spinner with options
-        spinner = (Spinner) findViewById(R.id.spinner_selectOption);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_selectOption);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.select_correct_option, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        addListenertoSpinner();
+
+        //addListenertoSpinner();
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> options, View view, int pos, long l) {
+                selectedOption = options.getItemAtPosition(pos).toString();
+                Toast.makeText(getBaseContext(),selectedOption,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> options) {
+                selectedOption = options.getItemAtPosition(0).toString();
+                Toast.makeText(getBaseContext(),selectedOption,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*if(fieldsvalidation())
+            madd.setEnabled(true);*/
 
         madd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Check_connectivity check = new Check_connectivity(Add_Questions.this);
-                if(check.getInternetStatus())
+                if(fieldsvalidation())
                 {
-                    insertTask i = new insertTask();
-                    i.execute(mques.getText().toString(),mopA.getText().toString(),mopB.getText().toString(),mopC.getText().toString(),mopD.getText().toString());
-                    mques.getText().clear();
-                    mopA.getText().clear();
-                    mopB.getText().clear();
-                    mopC.getText().clear();
-                    mopD.getText().clear();
+                    if(check.getInternetStatus())
+                    {
+                        insertTask i = new insertTask();
+                        i.execute(mques.getText().toString(),mopA.getText().toString(),mopB.getText().toString(),mopC.getText().toString(),mopD.getText().toString());
+                    }
+                    else{
+                        Toast.makeText(Add_Questions.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    Toast.makeText(Add_Questions.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Add_Questions.this,"Field cannot be left blank",Toast.LENGTH_LONG).show();
                 }
 
             }
+
         });
         mcancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,23 +122,31 @@ public class Add_Questions extends AppCompatActivity {
             public void onClick(View view) {
 
                 Check_connectivity check = new Check_connectivity(Add_Questions.this);
-                if(check.getInternetStatus())
+                if(fieldsvalidation())
                 {
-                    insertTask i = new insertTask();
-                    i.execute(mques.getText().toString(),mopA.getText().toString(),mopB.getText().toString(),mopC.getText().toString(),mopD.getText().toString());
-                    startActivity(new Intent(Add_Questions.this,MainActivity.class));
-                    finish();
+                    if(check.getInternetStatus())
+                    {
+                        insertTask i = new insertTask();
+                        i.execute(mques.getText().toString(),mopA.getText().toString(),mopB.getText().toString(),mopC.getText().toString(),mopD.getText().toString());
+                        submitflag = 1;
+                    }
+                    else{
+                        Toast.makeText(Add_Questions.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    Toast.makeText(Add_Questions.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Add_Questions.this,"Field cannot be left blank",Toast.LENGTH_LONG).show();
                 }
             }
         });
 
     }
 
+    private boolean fieldsvalidation() {
+        return mques.getText() != null && mopA.getText() != null && mopB.getText() != null && mopC.getText() != null && mopD.getText() != null;
+    }
+/*
     private void addListenertoSpinner() {
-        spinner = (Spinner) findViewById(R.id.spinner_selectOption);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> options, View view, int pos, long l) {
@@ -136,36 +160,45 @@ public class Add_Questions extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),selectedOption,Toast.LENGTH_SHORT);
             }
         });
-    }
+    }*/
 
     private class insertTask extends AsyncTask<String,String,String>
     {
-        ProgressDialog pd;
+        ProgressDialog pd1;
 
         @Override
         protected void onPreExecute() {
 
             super.onPreExecute();
-            pd=new ProgressDialog(context);
-            pd.setTitle("Saving Question");
-            pd.setMessage("Please wait...");
-            pd.setCancelable(false);
-            pd.setCanceledOnTouchOutside(false);
-            pd.show();
+            pd1=new ProgressDialog(Add_Questions.this);
+            pd1.setTitle("Saving Question");
+            pd1.setMessage("Please wait...");
+            pd1.setCancelable(false);
+            pd1.setCanceledOnTouchOutside(false);
+            System.out.println("Inside Pre-execute");
+            pd1.show();
         }
 
         @Override
         protected void onPostExecute(String s) {
-
+            pd1.dismiss();
+            System.out.println("Inside Post-execute");
             super.onPostExecute(s);
-            //Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
             if (!("not valid".equals(s.trim()))){
                 Toast.makeText(Add_Questions.this,s,Toast.LENGTH_SHORT).show();
-                pd.dismiss();
+                mques.getText().clear();
+                mopA.getText().clear();
+                mopB.getText().clear();
+                mopC.getText().clear();
+                mopD.getText().clear();
+                if(submitflag == 1)
+                {
+                    startActivity(new Intent(Add_Questions.this,MainActivity.class));
+                    finish();
+                }
             }
             else {
                 Toast.makeText(Add_Questions.this,"Question could not be saved.",Toast.LENGTH_SHORT).show();
-                pd.dismiss();
             }
 
 
@@ -202,13 +235,15 @@ public class Add_Questions extends AppCompatActivity {
                 String result;
 
                 result = bufferedReader.readLine();
+                System.out.println("Inside Do-in-Background");
                 return result;
+
 
             }catch(Exception e){
                 e.printStackTrace();
             }
 
-            return null;
+            return "not valid";
         }
     }
 
@@ -235,19 +270,26 @@ public class Add_Questions extends AppCompatActivity {
             super.onPostExecute(s);
             pd.dismiss();
 
-            if(s.trim() == ""){
-                Toast.makeText(getBaseContext(),"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
-                flag = 0;
-            }
-            else if (!("error".equals(s.trim()))){
+            if (!("error".equals(s.trim()))){
 
                 quesB_id = s.trim();
                 Toast.makeText(getBaseContext(),quesB_id,Toast.LENGTH_SHORT).show();
+                mques.getText().clear();
+                mopA.getText().clear();
+                mopB.getText().clear();
+                mopC.getText().clear();
+                mopD.getText().clear();
             }
             else
             {
+                Toast.makeText(getBaseContext(),"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
                 flag = 0;
-                Toast.makeText(getBaseContext(),"Error : "+s,Toast.LENGTH_LONG).show();
+            }
+            if(flag == 0)
+            {
+                Toast.makeText(Add_Questions.this,"Could not save the Quesion Bank details",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Add_Questions.this,QBDetails.class));
+                finish();
             }
         }
 
@@ -277,6 +319,8 @@ public class Add_Questions extends AppCompatActivity {
 
                 result = bufferedReader.readLine();
                 System.out.println("result "+result);
+                if(result == null)
+                    return "error";
                 return result;
 
 
@@ -285,7 +329,7 @@ public class Add_Questions extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return null;
+            return "error";
         }
     }
 

@@ -122,7 +122,7 @@ public class DisplayTest extends AppCompatActivity {
 
                 //READ
                 while ((line = bufferedReader.readLine()) != null) {
-                    jsonData.append(line + "\n");
+                    jsonData.append(line).append("\n");
                 }
 
                 return jsonData.toString();

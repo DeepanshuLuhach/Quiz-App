@@ -36,7 +36,8 @@ public class QBDetails extends AppCompatActivity {
 
                 Check_connectivity check = new Check_connectivity(QBDetails.this);
                 if(check.getInternetStatus())
-                {                    Intent i = new Intent(QBDetails.this, Add_Questions.class);
+                {
+                    Intent i = new Intent(QBDetails.this, Add_Questions.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("Name",mname.getText().toString() );
                     bundle.putString("posM",mposmarks.getText().toString() );

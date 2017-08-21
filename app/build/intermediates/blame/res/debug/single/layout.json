@@ -24,6 +24,10 @@
         "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/list_item.xml"
     },
     {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/show_test_list.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/show_test_list.xml"
+    },
+    {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
         "source": "/home/deepanshu/.android/build-cache/9750efc1489a8586b03bd47e421c3dd3f8cd9514/output/res/layout/design_navigation_item_separator.xml"
     },
@@ -74,6 +78,10 @@
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_user.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_user.xml"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
@@ -152,6 +160,10 @@
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/layout/notification_template_part_chronometer.xml"
     },
     {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_start_test.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_start_test.xml"
+    },
+    {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_display_qb.xml",
         "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_display_qb.xml"
     },
@@ -170,6 +182,10 @@
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/fragment_admin_side.xml",
         "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/fragment_admin_side.xml"
+    },
+    {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/show_test.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/show_test.xml"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_qbdetails.xml",
@@ -234,6 +250,10 @@
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_question.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_question.xml"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
