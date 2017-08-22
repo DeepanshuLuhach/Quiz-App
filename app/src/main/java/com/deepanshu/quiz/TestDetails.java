@@ -125,7 +125,7 @@ public class TestDetails extends AppCompatActivity {
                 if (s.equals("not valid")) {
                     Toast.makeText(getBaseContext(), "Check your internet connectivity!!!", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
                     if(!("not valid".equals(s.trim()))) {
                         Intent intent = new Intent(TestDetails.this,MainActivity.class);
                         startActivity(intent);

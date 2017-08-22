@@ -2,6 +2,7 @@ package com.deepanshu.quiz;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -89,11 +90,11 @@ public class DisplayQB extends AppCompatActivity{
                 recyclerView.setAdapter(addapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(DisplayQB.this));
 
-
-
             } catch (Exception e){
                 e.printStackTrace();
                 Toast.makeText(DisplayQB.this,"Unable to fetch Data",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(DisplayQB.this,MainActivity.class));//new line
+                finish();
             }
 
 

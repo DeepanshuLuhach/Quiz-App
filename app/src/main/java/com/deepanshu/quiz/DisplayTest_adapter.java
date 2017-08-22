@@ -95,6 +95,7 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
                     */
                     Intent gb = new Intent(context,DisplayTest.class);
                     context.startActivity(gb);
+
                 }
             });
         }
@@ -189,4 +190,5 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
             return null;
         }
     }
+
 }

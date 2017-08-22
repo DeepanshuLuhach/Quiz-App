@@ -2,6 +2,7 @@ package com.deepanshu.quiz;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -58,7 +59,10 @@ public class DisplayTest extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pd.setMessage("Loading");
+            pd.setTitle("Loading Your Tests");
+            pd.setMessage("Please wait...");
+            pd.setCancelable(false);
+            pd.setCanceledOnTouchOutside(false);
             pd.show();
         }
 
@@ -97,9 +101,13 @@ public class DisplayTest extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
                 Toast.makeText(DisplayTest.this,"Unable to fetch Data",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(DisplayTest.this,MainActivity.class));//new line
+                finish();
             }catch (Exception e){
                 e.printStackTrace();
                 Toast.makeText(DisplayTest.this,"Unable to connect",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(DisplayTest.this,MainActivity.class));//new line
+                finish();
             }
 
 
@@ -133,5 +141,10 @@ public class DisplayTest extends AppCompatActivity {
 
             return null;
         }
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(DisplayTest.this,MainActivity.class));
+        finish();
     }
 }

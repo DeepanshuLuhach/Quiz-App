@@ -2,6 +2,7 @@ package com.deepanshu.quiz;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.view.View;
@@ -108,6 +109,8 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
         protected Boolean doInBackground(Void... voids) {
 
             try {
+                if(jsonData == null)
+                    return false;
                 JSONArray ja = new JSONArray(jsonData);
                 JSONObject jo;
 
@@ -144,7 +147,7 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
                         TestDetails.qbid = qbId.get(pos);
-                        Toast.makeText(c, TestDetails.qbid, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(c, TestDetails.qbid, Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -155,7 +158,8 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
                 });
 
             } else {
-                Toast.makeText(c, "Unable To Parse,Check Your Log output", Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, "Unable To Load QBs!!!", Toast.LENGTH_SHORT).show();
+                c.startActivity(new Intent(c,MainActivity.class));//new line
             }
         }
 

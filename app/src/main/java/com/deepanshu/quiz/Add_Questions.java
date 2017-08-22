@@ -32,6 +32,8 @@ public class Add_Questions extends AppCompatActivity {
     int flag, submitflag;
     SharedPreferences sharedPreferences;
     String answer = "";
+    Spinner spinner;
+    ArrayAdapter<CharSequence> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +67,8 @@ public class Add_Questions extends AppCompatActivity {
         Button msubmit = (Button) findViewById(R.id.btn_submitquestionbnk);
 
         //Populating Spinner with options
-        Spinner spinner = (Spinner) findViewById(R.id.spinner_selectOption);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.select_correct_option, android.R.layout.simple_spinner_item);
+        spinner = (Spinner) findViewById(R.id.spinner_selectOption);
+        adapter = ArrayAdapter.createFromResource(this, R.array.select_correct_option, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -75,14 +77,40 @@ public class Add_Questions extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> options, View view, int pos, long l) {
                 selectedOption = options.getItemAtPosition(pos).toString();
-                setAnswer();
+                switch (selectedOption) {
+                    case "A":
+                        answer = mopA.getText().toString();
+                        break;
+                    case "B":
+                        answer = mopB.getText().toString();
+                        break;
+                    case "C":
+                        answer = mopC.getText().toString();
+                        break;
+                    case "D":
+                        answer = mopD.getText().toString();
+                        break;
+                }
                 Toast.makeText(getBaseContext(),answer,Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> options) {
                 selectedOption = options.getItemAtPosition(0).toString();
-                setAnswer();
+                switch (selectedOption) {
+                    case "A":
+                        answer = mopA.getText().toString();
+                        break;
+                    case "B":
+                        answer = mopB.getText().toString();
+                        break;
+                    case "C":
+                        answer = mopC.getText().toString();
+                        break;
+                    case "D":
+                        answer = mopD.getText().toString();
+                        break;
+                }
                 Toast.makeText(getBaseContext(),answer,Toast.LENGTH_SHORT).show();
             }
         });
@@ -145,15 +173,9 @@ public class Add_Questions extends AppCompatActivity {
 
     }
 
-    private void setAnswer() {
-        if(selectedOption == "A") answer = mopA.getText().toString();
-        else if(selectedOption == "B") answer = mopB.getText().toString();
-        else if(selectedOption == "C") answer = mopC.getText().toString();
-        else answer = mopD.getText().toString();
-    }
 
     private boolean fieldsvalidation() {
-        return mques.getText() != null && mopA.getText() != null && mopB.getText() != null && mopC.getText() != null && mopD.getText() != null;
+        return mques.getText().toString() != "" && mopA.getText().toString() != "" && mopB.getText().toString() != "" && mopC.getText().toString() != "" && mopD.getText().toString() != "";
     }
 /*
     private void addListenertoSpinner() {
@@ -194,13 +216,15 @@ public class Add_Questions extends AppCompatActivity {
             pd1.dismiss();
             System.out.println("Inside Post-execute");
             super.onPostExecute(s);
-            if (!("not valid".equals(s.trim()))){
-                Toast.makeText(Add_Questions.this,s,Toast.LENGTH_SHORT).show();
+            if ("valid".equals(s.trim())){
+                //Toast.makeText(Add_Questions.this,s,Toast.LENGTH_SHORT).show();
                 mques.getText().clear();
                 mopA.getText().clear();
                 mopB.getText().clear();
                 mopC.getText().clear();
                 mopD.getText().clear();
+                spinner.setAdapter(null);
+                spinner.setAdapter(adapter);
                 if(submitflag == 1)
                 {
                     startActivity(new Intent(Add_Questions.this,MainActivity.class));
@@ -283,7 +307,7 @@ public class Add_Questions extends AppCompatActivity {
             if (!("error".equals(s.trim()))){
 
                 quesB_id = s.trim();
-                Toast.makeText(getBaseContext(),quesB_id,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),quesB_id,Toast.LENGTH_SHORT).show();
                 mques.getText().clear();
                 mopA.getText().clear();
                 mopB.getText().clear();
@@ -297,7 +321,7 @@ public class Add_Questions extends AppCompatActivity {
             }
             if(flag == 0)
             {
-                Toast.makeText(Add_Questions.this,"Could not save the Quesion Bank details",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Add_Questions.this,"Could not save the Question Bank details",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Add_Questions.this,QBDetails.class));
                 finish();
             }

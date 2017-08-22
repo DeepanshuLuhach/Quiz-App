@@ -8,22 +8,21 @@
 
     <TextView
         android:id="@+id/tv_ques"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="25sp"
+        android:text="Question"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:textSize="18sp"
-        android:text="Question" />
+        android:layout_alignStart="@+id/rg_options" />
 
     <RadioGroup
         android:id="@+id/rg_options"
         android:layout_width="300dp"
-
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_below="@+id/tv_ques"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp">
         <RadioButton
             android:id="@+id/rb_opA"
             android:layout_width="wrap_content"
@@ -31,7 +30,7 @@
             android:layout_marginEnd="60dp"
             android:layout_marginStart="20dp"
             android:text="Option A"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:layout_below="@+id/tv_ques"
             android:layout_alignEnd="@+id/tv_ques" />
 
@@ -41,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/rb_opA"
             android:layout_below="@+id/rb_opA"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:layout_marginTop="25dp"
             android:layout_marginStart="20dp"
             android:text="Option B" />
@@ -54,7 +53,7 @@
             android:layout_below="@+id/rb_opB"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="Option C" />
 
         <RadioButton
@@ -65,7 +64,7 @@
             android:layout_below="@+id/rb_opC"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="Option D" />
 
 

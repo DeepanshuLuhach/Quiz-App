@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class StartTest extends AppCompatActivity {
 
-    TextView mtestName, mtestTopic, mDuration, mAuthor;
+    TextView mtestName, mtestTopic, mDuration, mAuthor, mposMarks, mnegMarks;
     Button mstartTest;
     int flag;
     String qbid, mAuthorId;
@@ -40,10 +40,12 @@ public class StartTest extends AppCompatActivity {
         mtestTopic = (TextView) findViewById(R.id.tv_test_topic);
         mDuration = (TextView) findViewById(R.id.tv_test_duration);
         mAuthor = (TextView) findViewById(R.id.tv_author);
+        mposMarks = (TextView) findViewById(R.id.tv_posMarks);
+        mnegMarks = (TextView) findViewById(R.id.tv_negMarks);
         mstartTest = (Button) findViewById(R.id.btn_start_test);
 
         Bundle bundle = getIntent().getExtras();
-        String testId = bundle.getString("TestId");
+        final String testId = bundle.getString("TestId");
         flag = 1;
         FetchTask s = new FetchTask();
         s.execute(testId);
@@ -58,6 +60,9 @@ public class StartTest extends AppCompatActivity {
                     Intent i = new Intent(StartTest.this, Question.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("QBId",qbid );
+                    bundle.putString("posMarks",mposMarks.getText().toString() );
+                    bundle.putString("negMarks",mnegMarks.getText().toString() );
+                    bundle.putString("TestId",testId );
                     i.putExtras(bundle);
                     startActivity(i);
                     finish();
@@ -114,6 +119,10 @@ public class StartTest extends AppCompatActivity {
                     mAuthorId = name;
                     name = jo.getString("name");
                     mAuthor.setText(name);
+                    name = jo.getString("COR_MARKS");
+                    mposMarks.setText(name);
+                    name = jo.getString("INCOR_MARKS");
+                    mnegMarks.setText(name);
                     qbid = jo.getString("QB_ID");
 
                 } catch (JSONException e) {
@@ -124,12 +133,11 @@ public class StartTest extends AppCompatActivity {
             else
             {
                 flag = 0;
-                Toast.makeText(getBaseContext(),"Error : "+s,Toast.LENGTH_LONG).show();
             }
             pd.dismiss();
             if(flag == 0)
             {
-                Toast.makeText(StartTest.this,"Could not connect to server",Toast.LENGTH_SHORT).show();
+                Toast.makeText(StartTest.this,"Could not start the test",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(StartTest.this,UserActivity.class));
                 finish();
             }
@@ -167,4 +175,4 @@ public class StartTest extends AppCompatActivity {
     }
 
 }
-//{"QB_ID":"1","USER_ID":"2","ONLINE":"0","TEST_NAME":"dbms","TOPIC":"sql","DURATION":"2"}
+//[{"QB_ID":"112","USER_ID":"1","ONLINE":"1","TEST_NAME":"test 1","TOPIC":"testing","DURATION":"1","name":"test","COR_MARKS":"5","INCOR_MARKS":"1"}]
