@@ -28,8 +28,9 @@ public class Add_Questions extends AppCompatActivity {
 
     private String selectedOption;
     private EditText mques,mopA,mopB,mopC,mopD;
-    private String quesB_id;
+    public String quesB_id;
     int flag, submitflag;
+    String calling;
     SharedPreferences sharedPreferences;
     String answer = "";
     Spinner spinner;
@@ -42,19 +43,29 @@ public class Add_Questions extends AppCompatActivity {
 
         //Saving question Bank details
         Bundle bundle = getIntent().getExtras();
-        String qbName = bundle.getString("Name");
-        String posMarks = bundle.getString("posM");
-        String negMarks = bundle.getString("negM");
-        flag = 1;
-        submitflag = 0;
-        SaveTask s = new SaveTask();
-        s.execute(qbName, posMarks, negMarks);
-        if(flag == 0)
-        {
-            Toast.makeText(Add_Questions.this,"Could not save the Quesion Bank details",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(Add_Questions.this,QBDetails.class));
-            finish();
+        calling = bundle.getString("Parent");
+        Toast.makeText(Add_Questions.this,calling,Toast.LENGTH_SHORT).show();
+        if(calling == "QBDetails"){
+            String qbName = bundle.getString("Name");
+            String posMarks = bundle.getString("posM");
+            String negMarks = bundle.getString("negM");
+            flag = 1;
+            SaveTask s = new SaveTask();
+            s.execute(qbName, posMarks, negMarks);
+            if(flag == 0)
+            {
+                Toast.makeText(Add_Questions.this,"Could not save the Quesion Bank details",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Add_Questions.this,QBDetails.class));
+                finish();
+            }
         }
+        else {
+            quesB_id = bundle.getString("qbid");
+            Toast.makeText(Add_Questions.this,quesB_id,Toast.LENGTH_SHORT).show();
+        }
+
+        submitflag = 0;
+
 
         mques = (EditText) findViewById(R.id.et_enterQuestion);
         mopA = (EditText) findViewById(R.id.et_optionA);
@@ -144,8 +155,14 @@ public class Add_Questions extends AppCompatActivity {
         mcancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Add_Questions.this,MainActivity.class));
-                finish();
+                if(calling == "QBDetails"){
+                    startActivity(new Intent(Add_Questions.this,MainActivity.class));
+                    finish();
+                }
+                else {
+                    startActivity(new Intent(Add_Questions.this,DisplayQB.class));
+                    finish();
+                }
             }
         });
         msubmit.setOnClickListener(new View.OnClickListener() {
@@ -225,10 +242,18 @@ public class Add_Questions extends AppCompatActivity {
                 mopD.getText().clear();
                 spinner.setAdapter(null);
                 spinner.setAdapter(adapter);
+                spinner.setSelection(0);
                 if(submitflag == 1)
                 {
-                    startActivity(new Intent(Add_Questions.this,MainActivity.class));
-                    finish();
+                    if(calling == "QBDetails"){
+                        startActivity(new Intent(Add_Questions.this,MainActivity.class));
+                        finish();
+                    }
+                    else {
+                        startActivity(new Intent(Add_Questions.this,DisplayQB.class));
+                        finish();
+                    }
+
                 }
             }
             else {
@@ -247,6 +272,7 @@ public class Add_Questions extends AppCompatActivity {
                 String opb = strings[2];
                 String opc = strings[3];
                 String opd = strings[4];
+
                 String data=  URLEncoder.encode("qbid","UTF-8") + "=" +
                         URLEncoder.encode(quesB_id,"UTF-8") + "&" +
                         URLEncoder.encode("question","UTF-8") + "=" +

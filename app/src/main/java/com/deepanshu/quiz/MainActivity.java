@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent g = new Intent(MainActivity.this,UserActivity.class);
+                g.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(g);
                 finish();
             }

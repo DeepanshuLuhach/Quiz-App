@@ -36,6 +36,9 @@ public class StartTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_test);
 
+        Bundle bundle = getIntent().getExtras();
+        final String testId = bundle.getString("TestId");
+
         mtestName = (TextView) findViewById(R.id.tv_test_name);
         mtestTopic = (TextView) findViewById(R.id.tv_test_topic);
         mDuration = (TextView) findViewById(R.id.tv_test_duration);
@@ -44,8 +47,7 @@ public class StartTest extends AppCompatActivity {
         mnegMarks = (TextView) findViewById(R.id.tv_negMarks);
         mstartTest = (Button) findViewById(R.id.btn_start_test);
 
-        Bundle bundle = getIntent().getExtras();
-        final String testId = bundle.getString("TestId");
+
         flag = 1;
         FetchTask s = new FetchTask();
         s.execute(testId);

@@ -24,6 +24,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent g = new Intent(UserActivity.this,MainActivity.class);
+                g.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(g);
                 finish();
             }
@@ -33,11 +34,12 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Check_connectivity check = new Check_connectivity(UserActivity.this);
-                if(check.getInternetStatus())
+                String id = mtestid.getText().toString();
+                if(check.getInternetStatus() && id != "")
                 {
                     Intent i = new Intent(UserActivity.this, StartTest.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("TestId",mtestid.getText().toString() );
+                    bundle.putString("TestId", id);
                     i.putExtras(bundle);
                     startActivity(i);
                     finish();

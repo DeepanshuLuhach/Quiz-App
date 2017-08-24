@@ -39,6 +39,7 @@ public class QBDetails extends AppCompatActivity {
                 {
                     Intent i = new Intent(QBDetails.this, Add_Questions.class);
                     Bundle bundle = new Bundle();
+                    bundle.putString("Parent","QBDetails");
                     bundle.putString("Name",mname.getText().toString() );
                     bundle.putString("posM",mposmarks.getText().toString() );
                     bundle.putString("negM",mnegmarks.getText().toString() );

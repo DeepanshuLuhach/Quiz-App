@@ -74,6 +74,8 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
                    /* status = (status+1)%2;
                     holder.mStatus.setText(stat[status]); */
                     Intent gb = new Intent(context,DisplayTest.class);
+                    gb.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    gb.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     context.startActivity(gb);
 
                 }
@@ -94,6 +96,8 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
                     holder.mStatus.setText(stat[status]);
                     */
                     Intent gb = new Intent(context,DisplayTest.class);
+                    gb.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    gb.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     context.startActivity(gb);
 
                 }
