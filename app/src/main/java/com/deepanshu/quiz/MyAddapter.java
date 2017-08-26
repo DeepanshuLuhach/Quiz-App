@@ -86,10 +86,10 @@ public class MyAddapter extends RecyclerView.Adapter<MyAddapter.ViewHolder>{
         public ViewHolder(View itemView) {
             super(itemView);
 
-            textViewQbid =(TextView) itemView.findViewById(R.id.textViewQbid);
-            textViewQbname =(TextView) itemView.findViewById(R.id.textViewQbname);
-            delete = (ImageButton) itemView.findViewById(R.id.img_delete);
-            show = (ImageButton) itemView.findViewById(R.id.img_show);
+            textViewQbid = itemView.findViewById(R.id.textViewQbid);
+            textViewQbname = itemView.findViewById(R.id.textViewQbname);
+            delete = itemView.findViewById(R.id.img_delete);
+            show = itemView.findViewById(R.id.img_show);
         }
     }
     private class deleteTask extends AsyncTask<String,String,String>

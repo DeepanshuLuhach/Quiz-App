@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,6 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
     private List<DisplayTest_ListItem> dt_listItems;
     Context context;
     public int status;
-    //public String stat[] = {"Start","Stop"};
     public DisplayTest_adapter(List<DisplayTest_ListItem> listItems,Context context) {
         this.dt_listItems = listItems;
         this.context = context;
@@ -58,7 +58,6 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
         pass = "QB Id : "+listItem.getTestQBId();
         holder.mqbid.setText(pass);
         status = Integer.parseInt(listItem.getTestStatus());
-
         String temp = "";
         if(status == 1){
             //Test is currently online Click stop to stop the test
@@ -103,6 +102,13 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
                 }
             });
         }
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteTask d = new deleteTask();
+                d.execute(id);
+            }
+        });
     }
 
     @Override
@@ -117,7 +123,7 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
         public TextView mDuration;
         public TextView mqbid;
         public Button mStatus;
-
+        public ImageButton delete;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -127,6 +133,7 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
             mqbid =  itemView.findViewById(R.id.tv_qb_id);
             mTopic = itemView.findViewById(R.id.tv_topic);
             mStatus = itemView.findViewById(R.id.btn_start_stop);
+            delete = itemView.findViewById(R.id.btn_delete_test);
         }
     }
 
@@ -195,4 +202,71 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
         }
     }
 
+    private class deleteTask extends AsyncTask<String,String,String>
+    {
+
+        ProgressDialog pd;
+        @Override
+        protected void onPreExecute() {
+
+            super.onPreExecute();
+            pd=new ProgressDialog(context);
+            pd.setTitle("Deleting Test");
+            pd.setCancelable(false);
+            pd.setCanceledOnTouchOutside(false);
+            pd.show();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            super.onPostExecute(s);
+            pd.dismiss();
+
+            if(s.trim().equals("")){
+                Toast.makeText(context,"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
+            }
+            else if (!("error".equals(s.trim()))){
+                Toast.makeText(context,"Delete Successful",Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(context,"Error : "+s,Toast.LENGTH_LONG).show();
+            }
+            Intent gb = new Intent(context,DisplayTest.class);
+            gb.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            gb.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivity(gb);
+
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try{
+                String test_id = strings[0];
+                String data= URLEncoder.encode("test_id","UTF-8") + "=" +
+                        URLEncoder.encode(test_id,"UTF-8") ;
+
+                URL url = new URL("https://contests.000webhostapp.com/php/delete_test.php?"+data);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                String result;
+
+                result = bufferedReader.readLine();
+                System.out.println("result "+result);
+                if(result == null)
+                    return "";
+                return result;
+
+
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+            return "";
+        }
+    }
 }

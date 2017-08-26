@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -32,6 +33,7 @@ public class TestResult extends AppCompatActivity implements OnChartValueSelecte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_result);
+
         Bundle bundle = getIntent().getExtras();
         int total = Integer.parseInt(bundle.getString("Total"));
         int correct = Integer.parseInt(bundle.getString("Correct"));
@@ -57,19 +59,26 @@ public class TestResult extends AppCompatActivity implements OnChartValueSelecte
         // IMPORTANT: In a PieChart, no values (Entry) should have the same
         // xIndex (even if from different DataSets), since no values can be
         // drawn above each other.
+
+        pieChart.setDescription("Test Result");
+
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setTransparentCircleRadius(50f);
+        pieChart.setHoleRadius(50f);
+        pieChart.setOnChartValueSelectedListener(this);
+
         ArrayList<PieEntry> yvalues = new ArrayList<PieEntry>();
         yvalues.add(new PieEntry(correct, 0));//correct
         yvalues.add(new PieEntry(incorrect, 1));//incorrect
         yvalues.add(new PieEntry(total-correct-incorrect, 2));//not attempted
 
-        PieDataSet dataSet;
-        dataSet = new PieDataSet(yvalues, "Election Results");
-
-        ArrayList<String> xVals = new ArrayList<String>();
-
+        final ArrayList<String> xVals = new ArrayList<String>();
         xVals.add("Correct");
         xVals.add("Incorrect");
         xVals.add("Not Attempted");
+        PieDataSet dataSet;
+        dataSet = new PieDataSet(yvalues, "Test Result");
+
 
         PieData data = new PieData(dataSet);
         // In Percentage term
@@ -77,30 +86,22 @@ public class TestResult extends AppCompatActivity implements OnChartValueSelecte
         // Default value
         //data.setValueFormatter(new DefaultValueFormatter(0));
         pieChart.setData(data);
-        pieChart.setDescription("This is Pie Chart");
-
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.setTransparentCircleRadius(50f);
-        pieChart.setHoleRadius(50f);
 
         dataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
         data.setValueTextSize(13f);
         data.setValueTextColor(Color.DKGRAY);
-        pieChart.setOnChartValueSelectedListener(this);
-
         pieChart.animateXY(1400, 1400);
 
     }
 
+
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
 
     }
 
     @Override
     public void onNothingSelected() {
-        Log.i("PieChart", "nothing selected");
-    }
 
+    }
 }

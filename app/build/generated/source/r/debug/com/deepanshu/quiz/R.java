@@ -3306,8 +3306,8 @@ containing a value of this type.
         public static final int btn_cancel_question=0x7f0e0083;
         public static final int btn_createQB=0x7f0e0093;
         public static final int btn_createTest=0x7f0e0095;
+        public static final int btn_delete_test=0x7f0e008c;
         public static final int btn_editQB=0x7f0e0094;
-        public static final int btn_edit_test=0x7f0e008c;
         public static final int btn_next=0x7f0e00a6;
         public static final int btn_saveTest=0x7f0e00c9;
         public static final int btn_start=0x7f0e00d2;

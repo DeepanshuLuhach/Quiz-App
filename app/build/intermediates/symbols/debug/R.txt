@@ -796,8 +796,8 @@ int id btn_cancelTest 0x7f0e00ca
 int id btn_cancel_question 0x7f0e0083
 int id btn_createQB 0x7f0e0093
 int id btn_createTest 0x7f0e0095
+int id btn_delete_test 0x7f0e008c
 int id btn_editQB 0x7f0e0094
-int id btn_edit_test 0x7f0e008c
 int id btn_next 0x7f0e00a6
 int id btn_saveTest 0x7f0e00c9
 int id btn_start 0x7f0e00d2
