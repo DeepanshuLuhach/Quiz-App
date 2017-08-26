@@ -76,6 +76,12 @@ public class DisplayTest extends AppCompatActivity {
                 JSONObject jo;
                 List<DisplayTest_ListItem> data = new ArrayList<>();
 
+                int count = ja.length();
+                if(count == 0){
+                    Toast.makeText(DisplayTest.this,"You didn't created any tested!!!",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(DisplayTest.this,MainActivity.class));
+                    finish();
+                }
 
                 for (int i = 0; i < ja.length(); i++) {
                     jo = ja.getJSONObject(i);

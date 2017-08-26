@@ -35,23 +35,34 @@ public class QBDetails extends AppCompatActivity {
                 //save data here and go to Add_Question activity
 
                 Check_connectivity check = new Check_connectivity(QBDetails.this);
-                if(check.getInternetStatus())
+                if(fieldsvalidation())
                 {
-                    Intent i = new Intent(QBDetails.this, Add_Questions.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("Parent","QBDetails");
-                    bundle.putString("Name",mname.getText().toString() );
-                    bundle.putString("posM",mposmarks.getText().toString() );
-                    bundle.putString("negM",mnegmarks.getText().toString() );
-                    i.putExtras(bundle);
-                    startActivity(i);
-                    finish();
+                    if(check.getInternetStatus())
+                    {
+                        Intent i = new Intent(QBDetails.this, Add_Questions.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("Parent","QBDetails");
+                        bundle.putString("Name",mname.getText().toString() );
+                        bundle.putString("posM",mposmarks.getText().toString() );
+                        bundle.putString("negM",mnegmarks.getText().toString() );
+                        i.putExtras(bundle);
+                        startActivity(i);
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(QBDetails.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    Toast.makeText(QBDetails.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    Toast.makeText(QBDetails.this,"Field cannot be left blank",Toast.LENGTH_LONG).show();
                 }
+
 
             }
         });
     }
+    private boolean fieldsvalidation() {
+        return !mname.getText().toString().equals("") && !mposmarks.getText().toString().equals("")&& !mnegmarks.getText().toString().equals("");
+    }
+
 }

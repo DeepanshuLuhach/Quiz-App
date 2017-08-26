@@ -36,7 +36,6 @@ public class TestDetails extends AppCompatActivity {
     Spinner mspinner;
     String uid;
     public static String qbid; //select from the spinner
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +54,7 @@ public class TestDetails extends AppCompatActivity {
 
         JsonParser_testDetails jsonParser = new JsonParser_testDetails(TestDetails.this,mspinner);
         jsonParser.execute(uid);
+
 
 
 

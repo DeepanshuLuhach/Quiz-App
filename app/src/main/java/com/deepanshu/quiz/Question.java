@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,14 +38,16 @@ import static com.deepanshu.quiz.Login.user_id;
 public class Question extends AppCompatActivity {
 
     TextView mques;
-    RadioButton mopA, mopB, mopC, mopD;
+    RadioButton mopA, mopB, mopC, mopD, ans, mnoOption;
+    RadioGroup grp;
     Button mnext;
     List <QuestionDetails> quesList;
     int index = 0;
     int quescount = 0;
-    int right = 0, wrong = 0, score = 0;
+    int right = 0, wrong = 0, score = 0, skipped = 0;
     QuestionDetails currentQuestion;
     SharedPreferences sharedPreferences;
+    private TextView timed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class Question extends AppCompatActivity {
         final String test_id = bundle.getString("TestId");
         final int positive = Integer.parseInt(bundle.getString("posMarks"));
         final int negative = Integer.parseInt(bundle.getString("negMarks"));
+        final int time = (Integer.parseInt(bundle.getString("mDuration"))*60);
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         final String uid = sharedPreferences.getString(user_id,"0");
@@ -64,49 +68,76 @@ public class Question extends AppCompatActivity {
         final String startTime = df.format(Calendar.getInstance().getTime());
         Toast.makeText(Question.this,startTime,Toast.LENGTH_SHORT).show();
 
-        FetchTask f = new FetchTask();
+        FetchTask f = new FetchTask();        //get all questions in an list and set first question
         f.execute(qbid);
 
-        //get all questions in an list and set first question
+
+        //timer
+
+        timed = (TextView) findViewById(R.id.tx_timed);
+        final long seconds =60;
+        CountDownTimer countDownTimer= new CountDownTimer(time*1000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long secondsInMilli = 1000;
+                long minutesInMilli = secondsInMilli * 60;
+                long hoursInMilli = minutesInMilli * 60;
+
+                long elapsedHours = millisUntilFinished / hoursInMilli;
+                millisUntilFinished = millisUntilFinished % hoursInMilli;
+
+                long elapsedMinutes = millisUntilFinished / minutesInMilli;
+                millisUntilFinished = millisUntilFinished % minutesInMilli;
+
+                long elapsedSeconds = millisUntilFinished / secondsInMilli;
+
+                String yy = String.format("%02d:%02d:%02d", elapsedHours, elapsedMinutes,elapsedSeconds);
+                timed.setText("Time Left: " + yy);
+            }
+
+            public void onFinish() {
+
+                timed.setText("Test Finished");
+                resultTask r = new resultTask();
+                r.execute(uid,test_id, String.valueOf(score), String.valueOf(right), String.valueOf(wrong), String.valueOf(quescount), String.valueOf(time));
+            }
+        }.start();
 
         mques = (TextView) findViewById(R.id.tv_ques);
         mopA = (RadioButton) findViewById(R.id.rb_opA);
         mopB = (RadioButton) findViewById(R.id.rb_opB);
         mopC = (RadioButton) findViewById(R.id.rb_opC);
         mopD = (RadioButton) findViewById(R.id.rb_opD);
+        mnoOption = (RadioButton) findViewById(R.id.rb_no);
         mnext = (Button) findViewById(R.id.btn_next);
         mnext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RadioGroup grp=(RadioGroup)findViewById(R.id.rg_options);
-                RadioButton ans=(RadioButton)findViewById(grp.getCheckedRadioButtonId());
+                grp=(RadioGroup)findViewById(R.id.rg_options);
+                ans=(RadioButton)findViewById(grp.getCheckedRadioButtonId());
                 //Toast.makeText(Question.this,ans.getText(),Toast.LENGTH_SHORT).show();
 
-                if(ans == null)
+                if(ans == null || ans.getText().equals("noooo"))
                 {
                     Toast.makeText(Question.this,"Skipped",Toast.LENGTH_SHORT).show();
+                    skipped++;
+
                 }
-                else if(currentQuestion.getAnswer().equals(ans.getText())){
+                else if(currentQuestion.getAnswer().equals(ans.getText()) && index <= quescount){
                     right++;
                 }
-                else{
+                else if(!currentQuestion.getAnswer().equals(ans.getText()) && index <= quescount){
                     wrong++;
+                    System.out.println("Right Answer = "+currentQuestion.getAnswer()+" Attempted Answer = "+ans.getText());
                 }
-                assert ans != null;
-                Toast.makeText(Question.this,currentQuestion.getAnswer()+" "+ans.getText(),Toast.LENGTH_SHORT).show();
+//                System.out.println("Right Answer = "+currentQuestion.getAnswer()+" Attempted Answer = "+ans.getText());
+                System.out.println("Right = "+right+" Wrong = "+wrong+" Skipped = "+(quescount-right-wrong));
 
-                mopA.setChecked(false);
-                mopB.setChecked(false);
-                mopC.setChecked(false);
-                mopD.setChecked(false);
                 if(index < quescount){
                     currentQuestion=quesList.get(index);
                     setQuestionView();
-                    if(index == quescount-1)
-                    {
-                        mnext.setText("Submit");
-                    }
-                    index++;
+//                    System.out.println(mopA.isChecked()+" "+mopB.isChecked()+" "+mopC.isChecked()+" "+mopD.isChecked()+" "+ans.isChecked());
+
                 }
                 else{
                     score = positive*right - negative*wrong;
@@ -132,7 +163,7 @@ public class Question extends AppCompatActivity {
                     }
 
                     resultTask r = new resultTask();
-                    r.execute(uid,test_id, String.valueOf(score), String.valueOf(min),startTime,endTime);
+                    r.execute(uid,test_id, String.valueOf(score), String.valueOf(right), String.valueOf(wrong), String.valueOf(quescount), String.valueOf(min));
                 }
             }
         });
@@ -141,11 +172,34 @@ public class Question extends AppCompatActivity {
     }
 
     private void setQuestionView() {
-        mques.setText(currentQuestion.getQuestion());
+        //reset
+        if(mopA.isChecked())
+            mopA.setChecked(false);
+        else if(mopB.isChecked())
+            mopB.setChecked(false);
+        else if(mopC.isChecked())
+            mopC.setChecked(false);
+        else if(mopD.isChecked())
+            mopD.setChecked(false);
+        if (ans != null){
+            ans.setChecked(false);
+            ans = null;
+        }
+        mnoOption.setChecked(true);
+        grp=(RadioGroup)findViewById(R.id.rg_options);
+        ans=(RadioButton)findViewById(grp.getCheckedRadioButtonId());
+        //setting question
+        String question = String.valueOf(index + 1) + ". " + currentQuestion.getQuestion();
+        mques.setText(question);
         mopA.setText(currentQuestion.getA());
         mopB.setText(currentQuestion.getB());
         mopC.setText(currentQuestion.getC());
         mopD.setText(currentQuestion.getD());
+        if(index == quescount-1)
+        {
+            mnext.setText("Submit");
+        }
+        index++;
 
     }
 
@@ -213,7 +267,6 @@ public class Question extends AppCompatActivity {
                     }
                     currentQuestion = quesList.get(index);
                     setQuestionView();
-                    index++;
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -278,18 +331,22 @@ public class Question extends AppCompatActivity {
             pd1.setMessage("Please wait...");
             pd1.setCancelable(false);
             pd1.setCanceledOnTouchOutside(false);
-            System.out.println("Inside Pre-execute");
             pd1.show();
         }
 
         @Override
         protected void onPostExecute(String s) {
             pd1.dismiss();
-            System.out.println("Inside Post-execute");
             super.onPostExecute(s);
             if ("valid".equals(s.trim())){
                 //Toast.makeText(Question.this,s,Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Question.this, UserActivity.class);
+                Intent intent = new Intent(Question.this, TestResult.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Total", String.valueOf(quescount));
+                bundle.putString("Correct", String.valueOf(right));
+                bundle.putString("Incorrect", String.valueOf(wrong));
+                bundle.putString("Score", String.valueOf(score));
+                intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
             }
@@ -307,21 +364,24 @@ public class Question extends AppCompatActivity {
                 String uid = strings[0];
                 String test_id = strings[1];
                 String score = strings[2];
-                String duration = strings[3];//total time taken by the user
-                String start_time = strings[4];
-                String end_time = strings[5];
+                String right = strings[3];
+                String wrong = strings[4];
+                String total = strings[5];
+                String duration = strings[6];//total time taken by the user
                 String data=  URLEncoder.encode("user_id","UTF-8") + "=" +
                         URLEncoder.encode(uid,"UTF-8") + "&" +
                         URLEncoder.encode("test_id","UTF-8") + "=" +
                         URLEncoder.encode(test_id,"UTF-8") + "&" +
                         URLEncoder.encode("score","UTF-8") + "=" +
                         URLEncoder.encode(score,"UTF-8")+ "&" +
+                        URLEncoder.encode("right","UTF-8") + "=" +
+                        URLEncoder.encode(right,"UTF-8")+ "&" +
+                        URLEncoder.encode("wrong","UTF-8") + "=" +
+                        URLEncoder.encode(wrong,"UTF-8")+ "&" +
+                        URLEncoder.encode("total","UTF-8") + "=" +
+                        URLEncoder.encode(total,"UTF-8")+ "&" +
                         URLEncoder.encode("duration","UTF-8") + "=" +
-                        URLEncoder.encode(duration,"UTF-8")+ "&" +
-                        URLEncoder.encode("start_time","UTF-8") + "=" +
-                        URLEncoder.encode(start_time,"UTF-8")+ "&" +
-                        URLEncoder.encode("end_time","UTF-8") + "=" +
-                        URLEncoder.encode(end_time,"UTF-8");
+                        URLEncoder.encode(duration,"UTF-8");
 
                 URL url = new URL("https://contests.000webhostapp.com/php/submit_result.php?"+data);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();

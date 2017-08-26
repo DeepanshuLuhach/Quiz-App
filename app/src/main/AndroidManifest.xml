@@ -27,6 +27,7 @@
             android:label="@string/title_activity_user__admin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Add_Questions" />
+        <activity android:name=".Result_User" />
         <activity android:name=".TestDetails" />
         <activity android:name=".ViewTests" />
         <activity android:name=".ViewQuestionBank" />
@@ -35,7 +36,8 @@
         <activity android:name=".DisplayTest_ListItem" />
         <activity android:name=".UserActivity" />
         <activity android:name=".StartTest" />
-        <activity android:name=".Question"></activity>
+        <activity android:name=".Question" />
+        <activity android:name=".TestResult"></activity>
     </application>
 
 </manifest>

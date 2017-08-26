@@ -13,7 +13,7 @@
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Name"
+        android:hint="@string/name_hint"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/etemail" />
 
@@ -24,7 +24,7 @@
         android:layout_below="@+id/etname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:hint="email"
+        android:hint="@string/email"
         android:ems="10"
         android:inputType="textEmailAddress" />
 
@@ -34,7 +34,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/etemail"
         android:layout_centerHorizontal="true"
-        android:hint="password"
+        android:hint="@string/password"
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPassword" />
@@ -47,6 +47,6 @@
         android:layout_below="@+id/etpass"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-        android:text="Register" />
+        android:text="@string/register" />
 
 </RelativeLayout>

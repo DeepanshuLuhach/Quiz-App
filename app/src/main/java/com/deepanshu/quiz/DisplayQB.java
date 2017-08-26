@@ -32,6 +32,7 @@ public class DisplayQB extends AppCompatActivity{
     private RecyclerView recyclerView;
     String uid;
     SharedPreferences sharedPreferences;
+    int count = 0;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -76,7 +77,12 @@ public class DisplayQB extends AppCompatActivity{
                 JSONArray ja = new JSONArray(jsonData);
                 JSONObject jo;
                 List<ListItem> data = new ArrayList<>();
-
+                count = ja.length();
+                if(count == 0){
+                    Toast.makeText(DisplayQB.this,"No Question Banks Available!!!",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(DisplayQB.this,MainActivity.class));
+                    finish();
+                }
 
                 for (int i = 0; i < ja.length(); i++) {
                     jo = ja.getJSONObject(i);

@@ -36,10 +36,12 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
     Context c;
     Spinner sp;
     ProgressDialog pd;
+    int flag;
 
     public JsonParser_testDetails(Context c, Spinner sp) {
         this.c = c;
         this.sp = sp;
+        this.flag = 1;
     }
 
     @Override
@@ -113,6 +115,10 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
                     return false;
                 JSONArray ja = new JSONArray(jsonData);
                 JSONObject jo;
+                int count = ja.length();
+                if(count == 0){
+                    flag = 0;
+                }
 
                 qbName.clear();
                 qbId.clear();
@@ -153,13 +159,16 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
 
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
-
+                        TestDetails.qbid = qbId.get(0);
                     }
                 });
 
-            } else {
-                Toast.makeText(c, "Unable To Load QBs!!!", Toast.LENGTH_SHORT).show();
-                c.startActivity(new Intent(c,MainActivity.class));//new line
+            }
+            if(flag == 0){
+                Toast.makeText(c,"No Question Banks Available!!!\nAdd Some Question Banks First",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(c,MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                c.startActivity(i);
             }
         }
 

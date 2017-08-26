@@ -14,4 +14,56 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_details">Test Details</string>
+    <string name="name">Name :</string>
+    <string name="topic">Topic :</string>
+    <string name="duration">Duration :</string>
+    <string name="author">Author :</string>
+    <string name="marking_scheme">Marking Scheme :</string>
+    <string name="positive">Positive :</string>
+    <string name="negative">Negative :</string>
+    <string name="start">Start</string>
+    <string name="test_name_hint">Test Name</string>
+    <string name="topic_hint">Topic</string>
+    <string name="duration_in_minutes">Duration in minutes</string>
+    <string name="start_now">Start Now</string>
+    <string name="select_question_bank">Select Question Bank :</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_your_question">Enter your Question</string>
+    <string name="option_a">Option A</string>
+    <string name="option_b">Option B</string>
+    <string name="option_c">Option C</string>
+    <string name="option_d">Option D</string>
+    <string name="select_correct_option">Select correct option :</string>
+    <string name="add">Add</string>
+    <string name="submit">Submit</string>
+    <string name="test_name">Test Name</string>
+    <string name="qb_id">QB_Id</string>
+    <string name="start_stop">Start/Stop</string>
+    <string name="edit">Edit</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="log_in">Log in</string>
+    <string name="not_registered_sign_up">Not Registered? Sign Up</string>
+    <string name="admin">Admin</string>
+    <string name="user">User</string>
+    <string name="create_question_bank">Create Question Bank</string>
+    <string name="view_question_bank">View Question Bank</string>
+    <string name="create_test">Create Test</string>
+    <string name="view_test">View Test</string>
+    <string name="question_bank_name">Question Bank Name</string>
+    <string name="positive_marks_for_correct_answer">Positive Marks for correct answer</string>
+    <string name="negative_marks_for_wrong_answer">Negative Marks for wrong answer</string>
+    <string name="add_questions">Add Questions</string>
+    <string name="name_hint">Name</string>
+    <string name="email">email</string>
+    <string name="register">Register</string>
+    <string name="question">Question</string>
+    <string name="next">Next</string>
+    <string name="attempt_test">Attempt Test</string>
+    <string name="enter_test_id">Enter Test ID</string>
+    <string name="results">Results</string>
+    <string name="no">noooo</string>
+
 </resources>

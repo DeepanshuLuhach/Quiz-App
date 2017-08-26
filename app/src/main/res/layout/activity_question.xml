@@ -5,78 +5,97 @@
     android:layout_height="match_parent"
     tools:context="com.deepanshu.quiz.Question">
 
-
     <TextView
-        android:id="@+id/tv_ques"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="25sp"
-        android:text="Question"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/rg_options" />
-
-    <RadioGroup
-        android:id="@+id/rg_options"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_ques"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp">
-        <RadioButton
-            android:id="@+id/rb_opA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginStart="20dp"
-            android:text="Option A"
-            android:textSize="20sp"
-            android:layout_below="@+id/tv_ques"
-            android:layout_alignEnd="@+id/tv_ques" />
-
-        <RadioButton
-            android:id="@+id/rb_opB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/rb_opA"
-            android:layout_below="@+id/rb_opA"
-            android:textSize="20sp"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="20dp"
-            android:text="Option B" />
-
-        <RadioButton
-            android:id="@+id/rb_opC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/rb_opB"
-            android:layout_below="@+id/rb_opB"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
-            android:textSize="20sp"
-            android:text="Option C" />
-
-        <RadioButton
-            android:id="@+id/rb_opD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/rb_opC"
-            android:layout_below="@+id/rb_opC"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
-            android:textSize="20sp"
-            android:text="Option D" />
-
-
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/tx_timed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Next"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="12dp"
+        android:textSize="20dp"/>
+
+    <ScrollView
+        android:id="@+id/question_scroll_view"
+        android:layout_below="@id/tx_timed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_ques"
+                android:layout_width="300dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="30dp"
+                android:textSize="25sp"
+                android:fontFamily="serif"
+                android:text="@string/question"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/rg_options" />
+
+            <RadioGroup
+                android:id="@+id/rg_options"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_ques"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp">
+                <RadioButton
+                    android:id="@+id/rb_opA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/option_a"
+                    android:fontFamily="serif"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_opB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="serif"
+                    android:text="@string/option_b" />
+
+                <RadioButton
+                    android:id="@+id/rb_opC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:textSize="20sp"
+                    android:fontFamily="serif"
+                    android:text="@string/option_c" />
+
+                <RadioButton
+                    android:id="@+id/rb_opD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:textSize="20sp"
+                    android:fontFamily="serif"
+                    android:text="@string/option_d" />
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="@string/no" />
+
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:text="@string/next"
+                android:layout_below="@+id/rg_options"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

@@ -64,6 +64,7 @@ public class StartTest extends AppCompatActivity {
                     bundle.putString("QBId",qbid );
                     bundle.putString("posMarks",mposMarks.getText().toString() );
                     bundle.putString("negMarks",mnegMarks.getText().toString() );
+                    bundle.putString("mDuration",mDuration.getText().toString() );
                     bundle.putString("TestId",testId );
                     i.putExtras(bundle);
                     startActivity(i);

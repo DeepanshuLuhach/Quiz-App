@@ -1,66 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.deepanshu.quiz.QBDetails">
 
-    <TextView
-        android:id="@+id/head1"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:fontFamily="serif"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:text="Enter the details of your Question Bank :"
-        android:layout_marginTop="49dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+   <ScrollView
+       android:id="@+id/qbdetails_scollview"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:scrollbars="vertical">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:id="@+id/head1"
+               android:layout_width="350dp"
+               android:layout_height="wrap_content"
+               android:layout_centerInParent="true"
+               android:fontFamily="serif"
+               android:textAlignment="center"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               tools:text="Enter the details of your Question Bank :"
+               android:layout_marginTop="49dp"
+               android:layout_alignParentTop="true"
+               android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:id="@+id/et_QBname"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint="Question Bank Name"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/head1"
-        android:layout_alignStart="@+id/et_posMarks"
-        android:layout_marginTop="40dp" />
+           <EditText
+               android:id="@+id/et_QBname"
+               android:layout_width="300dp"
+               android:layout_height="45dp"
+               android:ems="10"
+               android:hint="@string/question_bank_name"
+               android:inputType="textPersonName"
+               android:layout_below="@+id/head1"
+               android:layout_alignStart="@+id/et_posMarks"
+               android:layout_marginTop="40dp" />
 
 
-    <EditText
-        android:id="@+id/et_posMarks"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Positive Marks for correct answer"
-        android:inputType="number"
-        android:layout_below="@+id/et_QBname"
-        android:layout_alignStart="@+id/et_negMarks" />
+           <EditText
+               android:id="@+id/et_posMarks"
+               android:layout_width="300dp"
+               android:layout_height="45dp"
+               android:layout_marginTop="40dp"
+               android:ems="10"
+               android:hint="@string/positive_marks_for_correct_answer"
+               android:inputType="number"
+               android:layout_below="@+id/et_QBname"
+               android:layout_alignStart="@+id/et_negMarks" />
 
-    <EditText
-        android:id="@+id/et_negMarks"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_below="@+id/et_posMarks"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Negative Marks for wrong answer"
-        android:inputType="number" />
+           <EditText
+               android:id="@+id/et_negMarks"
+               android:layout_width="300dp"
+               android:layout_height="45dp"
+               android:layout_below="@+id/et_posMarks"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="40dp"
+               android:ems="10"
+               android:hint="@string/negative_marks_for_wrong_answer"
+               android:inputType="number" />
 
+       </RelativeLayout>
+   </ScrollView>
     <Button
         android:id="@+id/btn_addQuestions"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:text="Add Questions"
-        android:layout_alignParentBottom="true"
+        android:text="@string/add_questions"
+        android:layout_below="@+id/qbdetails_scollview"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="66dp" />
+        android:layout_marginTop="60dp" />
 </RelativeLayout>

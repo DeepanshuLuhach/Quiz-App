@@ -35,20 +35,39 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Check_connectivity check = new Check_connectivity(UserActivity.this);
                 String id = mtestid.getText().toString();
-                if(check.getInternetStatus() && id != "")
+                if(fieldsvalidation())
                 {
-                    Intent i = new Intent(UserActivity.this, StartTest.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("TestId", id);
-                    i.putExtras(bundle);
-                    startActivity(i);
-                    finish();
+                    if(check.getInternetStatus())
+                    {
+                        Intent i = new Intent(UserActivity.this, StartTest.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("TestId", id);
+                        i.putExtras(bundle);
+                        startActivity(i);
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(UserActivity.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    Toast.makeText(UserActivity.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserActivity.this,"Field cannot be left blank",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        mshowResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent g = new Intent(UserActivity.this,Result_User.class);
+                startActivity(g);
+                finish();
             }
         });
         
     }
+    private boolean fieldsvalidation() {
+        return !mtestid.getText().toString().equals("");
+    }
 }
+

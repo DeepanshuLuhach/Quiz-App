@@ -55,15 +55,20 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
 
                 Check_connectivity check = new Check_connectivity(Login.this);
-                if(check.getInternetStatus())
+                if(fieldsvalidation())
                 {
-                    loginTask o = new loginTask();
-                    o.execute(musername.getText().toString(),mpassword.getText().toString());
+                    if(check.getInternetStatus())
+                    {
+                        loginTask o = new loginTask();
+                        o.execute(musername.getText().toString(),mpassword.getText().toString());
+                    }
+                    else{
+                        Toast.makeText(Login.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    Toast.makeText(Login.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this,"Field cannot be left blank",Toast.LENGTH_LONG).show();
                 }
-
                 //Toast.makeText(Login.this,"Register here",Toast.LENGTH_LONG).show();;
             }
         });
@@ -84,6 +89,10 @@ public class Login extends AppCompatActivity {
 
             }
         });
+    }
+
+    private boolean fieldsvalidation() {
+        return !musername.getText().toString().equals("") && !mpassword.getText().toString().equals("");
     }
 
     public class loginTask extends AsyncTask<String,String,String>

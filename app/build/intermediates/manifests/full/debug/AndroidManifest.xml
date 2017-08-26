@@ -37,6 +37,7 @@
             android:label="@string/title_activity_user__admin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.deepanshu.quiz.Add_Questions" />
+        <activity android:name="com.deepanshu.quiz.Result_User" />
         <activity android:name="com.deepanshu.quiz.TestDetails" />
         <activity android:name="com.deepanshu.quiz.ViewTests" />
         <activity android:name="com.deepanshu.quiz.ViewQuestionBank" />
@@ -46,6 +47,7 @@
         <activity android:name="com.deepanshu.quiz.UserActivity" />
         <activity android:name="com.deepanshu.quiz.StartTest" />
         <activity android:name="com.deepanshu.quiz.Question" />
+        <activity android:name="com.deepanshu.quiz.TestResult" />
     </application>
 
 </manifest>

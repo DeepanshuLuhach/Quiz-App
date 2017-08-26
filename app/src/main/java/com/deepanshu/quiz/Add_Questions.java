@@ -45,10 +45,11 @@ public class Add_Questions extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         calling = bundle.getString("Parent");
         Toast.makeText(Add_Questions.this,calling,Toast.LENGTH_SHORT).show();
-        if(calling == "QBDetails"){
+        if(calling.equals("QBDetails")){
             String qbName = bundle.getString("Name");
             String posMarks = bundle.getString("posM");
             String negMarks = bundle.getString("negM");
+            Toast.makeText(Add_Questions.this,"Inside",Toast.LENGTH_SHORT).show();
             flag = 1;
             SaveTask s = new SaveTask();
             s.execute(qbName, posMarks, negMarks);
@@ -61,6 +62,7 @@ public class Add_Questions extends AppCompatActivity {
         }
         else {
             quesB_id = bundle.getString("qbid");
+            Toast.makeText(Add_Questions.this,"Other One",Toast.LENGTH_SHORT).show();
             Toast.makeText(Add_Questions.this,quesB_id,Toast.LENGTH_SHORT).show();
         }
 
@@ -155,7 +157,7 @@ public class Add_Questions extends AppCompatActivity {
         mcancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(calling == "QBDetails"){
+                if(calling.equals("QBDetails")){
                     startActivity(new Intent(Add_Questions.this,MainActivity.class));
                     finish();
                 }
@@ -192,7 +194,7 @@ public class Add_Questions extends AppCompatActivity {
 
 
     private boolean fieldsvalidation() {
-        return mques.getText().toString() != "" && mopA.getText().toString() != "" && mopB.getText().toString() != "" && mopC.getText().toString() != "" && mopD.getText().toString() != "";
+        return !mques.getText().toString().equals("") && !mopA.getText().toString().equals("") && !mopB.getText().toString().equals("") && !mopC.getText().toString().equals("") && !mopD.getText().toString().equals("");
     }
 /*
     private void addListenertoSpinner() {
@@ -243,9 +245,10 @@ public class Add_Questions extends AppCompatActivity {
                 spinner.setAdapter(null);
                 spinner.setAdapter(adapter);
                 spinner.setSelection(0);
+                answer = mopA.getText().toString();
                 if(submitflag == 1)
                 {
-                    if(calling == "QBDetails"){
+                    if(calling.equals("QBDetails")){
                         startActivity(new Intent(Add_Questions.this,MainActivity.class));
                         finish();
                     }

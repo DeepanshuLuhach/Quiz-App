@@ -35,18 +35,29 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
 
                 Check_connectivity check = new Check_connectivity(Register.this);
-                if(check.getInternetStatus())
+                if(fieldsvalidation())
                 {
-                    RegisterTask r = new RegisterTask();
-                    r.execute(mname.getText().toString(),mpassword.getText().toString(),memail.getText().toString());
+                    if(check.getInternetStatus())
+                    {
+                        RegisterTask r = new RegisterTask();
+                        r.execute(mname.getText().toString(),mpassword.getText().toString(),memail.getText().toString());
+                    }
+                    else{
+                        Toast.makeText(Register.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    Toast.makeText(Register.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this,"Field cannot be left blank",Toast.LENGTH_LONG).show();
                 }
 
             }
         });
     }
+
+    private boolean fieldsvalidation() {
+        return !mname.getText().toString().equals("") && !mpassword.getText().toString().equals("") && !memail.getText().toString().equals("");
+    }
+
     public class RegisterTask extends AsyncTask<String,String,String>
     {
 
