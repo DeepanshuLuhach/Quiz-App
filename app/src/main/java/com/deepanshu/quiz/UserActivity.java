@@ -1,12 +1,17 @@
 package com.deepanshu.quiz;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import static com.deepanshu.quiz.Login.MyPREFERENCES;
 
 public class UserActivity extends AppCompatActivity {
     Button mswtich_admin, mstartTest, mshowResult;
@@ -69,5 +74,32 @@ public class UserActivity extends AppCompatActivity {
     private boolean fieldsvalidation() {
         return !mtestid.getText().toString().equals("");
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_logout){
+            logout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logout(){
+        SharedPreferences myPrefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = myPrefs.edit();
+        editor.clear();
+        editor.apply();
+        Intent intent = new Intent(UserActivity.this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+
+    }
+
 }
 

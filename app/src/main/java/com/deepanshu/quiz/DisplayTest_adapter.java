@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +28,11 @@ import static com.deepanshu.quiz.Login.user_id;
  * Created by deepanshu on 27/7/17.
  */
 
-public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewHolder> {
+class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewHolder> {
     private List<DisplayTest_ListItem> dt_listItems;
     Context context;
-    public int status;
-    public DisplayTest_adapter(List<DisplayTest_ListItem> listItems,Context context) {
+
+    DisplayTest_adapter(List<DisplayTest_ListItem> listItems, Context context) {
         this.dt_listItems = listItems;
         this.context = context;
     }
@@ -57,7 +58,7 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
         holder.mDuration.setText(pass);
         pass = "QB Id : "+listItem.getTestQBId();
         holder.mqbid.setText(pass);
-        status = Integer.parseInt(listItem.getTestStatus());
+        int status = Integer.parseInt(listItem.getTestStatus());
         String temp = "";
         if(status == 1){
             //Test is currently online Click stop to stop the test
@@ -66,12 +67,9 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
             holder.mStatus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //int temp = (status+1)%2;
                     int temp = 0;
                     updateStatusTask u = new updateStatusTask();
                     u.execute(id, String.valueOf(temp));
-                   /* status = (status+1)%2;
-                    holder.mStatus.setText(stat[status]); */
                     Intent gb = new Intent(context,DisplayTest.class);
                     gb.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     gb.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -87,13 +85,10 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
             holder.mStatus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //int temp = (status+1)%2;
                     int temp = 1;
                     updateStatusTask u = new updateStatusTask();
                     u.execute(id, String.valueOf(temp));
-                   /* status = (status+1)%2;
-                    holder.mStatus.setText(stat[status]);
-                    */
+
                     Intent gb = new Intent(context,DisplayTest.class);
                     gb.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     gb.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -102,6 +97,19 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
                 }
             });
         }
+
+        holder.mResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,AdminResults.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("TestId",id);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+
+            }
+        });
+
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,16 +124,16 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
         return dt_listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView mTestName;
-        public TextView mTopic;
-        public TextView mDuration;
-        public TextView mqbid;
-        public Button mStatus;
-        public ImageButton delete;
+        TextView mTestName;
+        TextView mTopic;
+        TextView mDuration;
+        TextView mqbid;
+        Button mStatus, mResult;
+        ImageButton delete;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             mTestName = itemView.findViewById(R.id.tv_test_name);
@@ -133,6 +141,7 @@ public class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapte
             mqbid =  itemView.findViewById(R.id.tv_qb_id);
             mTopic = itemView.findViewById(R.id.tv_topic);
             mStatus = itemView.findViewById(R.id.btn_start_stop);
+            mResult = itemView.findViewById(R.id.btn_admin_result);
             delete = itemView.findViewById(R.id.btn_delete_test);
         }
     }

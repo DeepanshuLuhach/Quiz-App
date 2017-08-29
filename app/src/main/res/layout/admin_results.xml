@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.deepanshu.quiz.AdminResults">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/result_details"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_test_name_admin_result"
+            android:padding="16dp"
+            android:text="Test name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_topic_admin_result"
+            android:padding="16dp"
+            android:text="Topic Name"
+            android:layout_marginTop="5dp"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/percentage_chart"
+            android:layout_width="match_parent"
+            android:layout_height="460dp"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recyclerView_result_admin"
+                >
+            </android.support.v7.widget.RecyclerView>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</ScrollView>

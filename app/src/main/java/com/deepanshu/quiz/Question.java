@@ -44,10 +44,11 @@ public class Question extends AppCompatActivity {
     List <QuestionDetails> quesList;
     int index = 0;
     int quescount = 0;
-    int right = 0, wrong = 0, score = 0, skipped = 0;
+    int right = 0, wrong = 0, score = 0, skipped = 0, maxMarks;
     QuestionDetails currentQuestion;
     SharedPreferences sharedPreferences;
     private TextView timed;
+    public double percent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class Question extends AppCompatActivity {
         final int positive = Integer.parseInt(bundle.getString("posMarks"));
         final int negative = Integer.parseInt(bundle.getString("negMarks"));
         final int time = (Integer.parseInt(bundle.getString("mDuration"))*60);
-
+        percent = 0.0;
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         final String uid = sharedPreferences.getString(user_id,"0");
 
@@ -140,7 +141,11 @@ public class Question extends AppCompatActivity {
 
                 }
                 else{
+                    maxMarks = quescount*positive;
                     score = positive*right - negative*wrong;
+                    if(score > 0)
+                        percent= ((double)score/maxMarks)*100;
+
                     Toast.makeText(Question.this,right+" "+wrong+" = "+score,Toast.LENGTH_SHORT).show();
 
                     DateFormat df = new SimpleDateFormat("dd MM yyyy, HH:mm:ss");
@@ -163,7 +168,7 @@ public class Question extends AppCompatActivity {
                     }
 
                     resultTask r = new resultTask();
-                    r.execute(uid,test_id, String.valueOf(score), String.valueOf(right), String.valueOf(wrong), String.valueOf(quescount), String.valueOf(min));
+                    r.execute(uid,test_id, String.valueOf(score), String.valueOf(right), String.valueOf(wrong), String.valueOf(quescount), String.valueOf(min), String.valueOf(percent));
                 }
             }
         });
@@ -346,6 +351,7 @@ public class Question extends AppCompatActivity {
                 bundle.putString("Correct", String.valueOf(right));
                 bundle.putString("Incorrect", String.valueOf(wrong));
                 bundle.putString("Score", String.valueOf(score));
+                bundle.putString("Percentage", String.valueOf(percent));
                 intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
@@ -368,12 +374,15 @@ public class Question extends AppCompatActivity {
                 String wrong = strings[4];
                 String total = strings[5];
                 String duration = strings[6];//total time taken by the user
+                String percentage = strings[7];
                 String data=  URLEncoder.encode("user_id","UTF-8") + "=" +
                         URLEncoder.encode(uid,"UTF-8") + "&" +
                         URLEncoder.encode("test_id","UTF-8") + "=" +
                         URLEncoder.encode(test_id,"UTF-8") + "&" +
                         URLEncoder.encode("score","UTF-8") + "=" +
                         URLEncoder.encode(score,"UTF-8")+ "&" +
+                        URLEncoder.encode("percentage","UTF-8") + "=" +
+                        URLEncoder.encode(percentage,"UTF-8")+ "&" +
                         URLEncoder.encode("right","UTF-8") + "=" +
                         URLEncoder.encode(right,"UTF-8")+ "&" +
                         URLEncoder.encode("wrong","UTF-8") + "=" +

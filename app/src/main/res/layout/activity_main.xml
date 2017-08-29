@@ -9,9 +9,9 @@
 
     <Button
         android:id="@+id/admin_btn"
-        android:layout_width="182dp"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginLeft="1dp"
         android:layout_marginTop="10dp"
         android:background="@android:color/holo_blue_light"
@@ -21,9 +21,9 @@
 
     <Button
         android:id="@+id/switch_to_user"
-        android:layout_width="182dp"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginLeft="190dp"
         android:layout_marginTop="10dp"
         android:background="@android:color/holo_blue_dark"
@@ -35,7 +35,7 @@
         android:layout_height="60dp"
         android:layout_below="@+id/admin_btn"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="35dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text="@string/create_question_bank" />
@@ -46,7 +46,7 @@
         android:layout_height="60dp"
         android:layout_below="@+id/btn_createQB"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="35dp"
         android:text="@string/view_question_bank" />
 
     <Button
@@ -55,7 +55,7 @@
         android:layout_height="60dp"
         android:layout_alignStart="@+id/btn_editQB"
         android:layout_below="@+id/btn_editQB"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="35dp"
         android:text="@string/create_test"
 
         />
@@ -66,8 +66,9 @@
         android:layout_height="60dp"
         android:layout_below="@+id/btn_createTest"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="35dp"
         android:text="@string/view_test" />
+
 
 
 </RelativeLayout>

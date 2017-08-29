@@ -47,12 +47,19 @@
                     android:layout_height="wrap_content"
                     android:text="@string/start_stop"
                     />
+                <Button
+                    android:id="@+id/btn_admin_result"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/result"
+                    />
 
                 <ImageButton
                     android:id="@+id/btn_delete_test"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="120dp"
+                    android:layout_marginStart="10dp"
 
                     android:background="@android:drawable/ic_menu_delete" />
 

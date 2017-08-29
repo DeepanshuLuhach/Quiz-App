@@ -16,7 +16,6 @@ import static com.deepanshu.quiz.Login.user_id;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView user_display;
     SharedPreferences sharedPreferences;
     Button mcreateQB, meditQB, mcreateTest;
     Button mviewTest;
@@ -33,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         {
             logout();
         }
-       /* user_display = (TextView) findViewById(R.id.display_user);
-        user_display.setText(uid); */
 
         mcreateQB = (Button) findViewById(R.id.btn_createQB);
         mcreateTest = (Button) findViewById(R.id.btn_createTest);
@@ -102,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences myPrefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = myPrefs.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
         Intent intent = new Intent(MainActivity.this, Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

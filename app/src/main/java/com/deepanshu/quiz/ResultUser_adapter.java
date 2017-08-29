@@ -27,7 +27,6 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -70,30 +69,28 @@ public class ResultUser_adapter extends RecyclerView.Adapter<ResultUser_adapter.
         holder.mScore.setText(pass);
         holder.pieChart.setUsePercentValues(true);
 
-        ArrayList<PieEntry> yvalues = new ArrayList<PieEntry>();
+        ArrayList<Entry> yvalues = new ArrayList<Entry>();
         int x = Integer.parseInt(listItem.getTotalCor());
-        yvalues.add(new PieEntry(x, 0));//correct
+        if(x>0)
+        yvalues.add(new Entry(x, 0));//correct
         x = Integer.parseInt(listItem.getTotalIncor());
-        yvalues.add(new PieEntry(x, 1));//incorrect
+        if(x>0)
+        yvalues.add(new Entry(x, 1));//incorrect
         x = Integer.parseInt(listItem.getTotal())-Integer.parseInt(listItem.getTotalCor())-Integer.parseInt(listItem.getTotalIncor());
-        yvalues.add(new PieEntry(x, 2));//not attempted
+        if(x>0)
+        yvalues.add(new Entry(x, 2));//not attempted
 
         PieDataSet dataSet;
-        dataSet = new PieDataSet(yvalues, "Election Results");
+        dataSet = new PieDataSet(yvalues, "");
+        ArrayList<String> xvalues = new ArrayList<>();
+        xvalues.add("Correct");
+        xvalues.add("InCorrect");
+        xvalues.add("Not Attempted");
 
-        ArrayList<String> xVals = new ArrayList<String>();
-
-        xVals.add("Correct");
-        xVals.add("Incorrect");
-        xVals.add("Not Attempted");
-
-        PieData data = new PieData(dataSet);
-        // In Percentage term
+        PieData data = new PieData(xvalues, dataSet);
         data.setValueFormatter(new PercentFormatter());
-        // Default value
-        //data.setValueFormatter(new DefaultValueFormatter(0));
         holder.pieChart.setData(data);
-        holder.pieChart.setDescription("This is Pie Chart");
+        holder.pieChart.setDescription("Test Result");
 
         holder.pieChart.setDrawHoleEnabled(true);
         holder.pieChart.setTransparentCircleRadius(50f);
@@ -101,7 +98,7 @@ public class ResultUser_adapter extends RecyclerView.Adapter<ResultUser_adapter.
 
         dataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
         data.setValueTextSize(13f);
-        data.setValueTextColor(Color.DKGRAY);
+        data.setValueTextColor(Color.BLACK);
         holder.pieChart.animateXY(1400, 1400);
 
 

@@ -65,5 +65,8 @@
     <string name="enter_test_id">Enter Test ID</string>
     <string name="results">Results</string>
     <string name="no">noooo</string>
+    <string name="result">Result</string>
+    <string name="percentage">Percentage</string>
+    <string name="score">Score</string>
 
 </resources>

@@ -37,7 +37,8 @@
         <activity android:name=".UserActivity" />
         <activity android:name=".StartTest" />
         <activity android:name=".Question" />
-        <activity android:name=".TestResult"></activity>
+        <activity android:name=".TestResult" />
+        <activity android:name=".AdminResults"></activity>
     </application>
 
 </manifest>

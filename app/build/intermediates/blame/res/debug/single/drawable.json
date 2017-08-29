@@ -156,16 +156,16 @@
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable/abc_item_background_holo_dark.xml"
     },
     {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable/abc_btn_colored_material.xml",
+        "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable/abc_btn_colored_material.xml"
+    },
+    {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable/abc_switch_thumb_material.xml"
-    },
-    {
-        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable/abc_btn_colored_material.xml",
-        "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/drawable/abc_btn_colored_material.xml"
     },
     {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_material.xml",

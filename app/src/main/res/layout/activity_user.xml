@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/switch_to_admin"
-        android:layout_width="182dp"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="1dp"
@@ -18,7 +18,7 @@
 
     <Button
         android:id="@+id/user_btn"
-        android:layout_width="182dp"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="190dp"
