@@ -23,6 +23,7 @@ public class QBDetails extends AppCompatActivity {
         mposmarks = (EditText) findViewById(R.id.et_posMarks);
         mnegmarks = (EditText) findViewById(R.id.et_negMarks);
         Button maddques = (Button) findViewById(R.id.btn_addQuestions);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String temp = "Enter the details of your Question Bank :";
         mhead.setText(temp);

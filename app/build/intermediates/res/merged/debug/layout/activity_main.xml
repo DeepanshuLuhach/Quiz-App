@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
+    android:background="@android:color/background_dark"
     tools:context="com.deepanshu.quiz.MainActivity">
 
 
@@ -14,10 +14,11 @@
         android:layout_marginBottom="40dp"
         android:layout_marginLeft="1dp"
         android:layout_marginTop="10dp"
-        android:background="@android:color/holo_blue_light"
+        android:background="@android:color/background_dark"
 
         android:enabled="true"
-        android:text="@string/admin" />
+        android:text="@string/admin"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/switch_to_user"
@@ -26,8 +27,9 @@
         android:layout_marginBottom="40dp"
         android:layout_marginLeft="190dp"
         android:layout_marginTop="10dp"
-        android:background="@android:color/holo_blue_dark"
-        android:text="@string/user" />
+        android:background="@color/cardview_dark_background"
+        android:text="@string/user"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btn_createQB"
@@ -68,7 +70,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="35dp"
         android:text="@string/view_test" />
-
 
 
 </RelativeLayout>

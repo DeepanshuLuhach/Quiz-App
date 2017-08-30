@@ -40,6 +40,8 @@ public class TestDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_details);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mname = (EditText) findViewById(R.id.et_testName);
         mtopic = (EditText) findViewById(R.id.et_topic);
         mduration = (EditText) findViewById(R.id.et_duration);

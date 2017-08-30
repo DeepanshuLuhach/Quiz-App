@@ -45,7 +45,7 @@
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="log_in">Log in</string>
-    <string name="not_registered_sign_up">Not Registered? Sign Up</string>
+    <string name="sign_up">Sign Up</string>
     <string name="admin">Admin</string>
     <string name="user">User</string>
     <string name="create_question_bank">Create Question Bank</string>

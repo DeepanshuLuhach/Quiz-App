@@ -50,12 +50,12 @@ class AdminResults_adapter extends RecyclerView.Adapter<AdminResults_adapter.Vie
         yvalue.add(new BarEntry(incorrect, 1));
         yvalue.add(new BarEntry(notAtttempted, 2));
 
-        BarDataSet dataSet = new BarDataSet(yvalue, "number of Question");
+        BarDataSet dataSet = new BarDataSet(yvalue, " Number of Question");
 
         ArrayList<String> xvalues = new ArrayList<>();
-        xvalues.add("Correct");
-        xvalues.add("InCorrect");
-        xvalues.add("Not Attempted");
+        xvalues.add(0,"Correct");
+        xvalues.add(1,"InCorrect");
+        xvalues.add(2,"Not Attempted");
 
         BarData data = new BarData(xvalues, dataSet);
         holder.barChart.setData(data);

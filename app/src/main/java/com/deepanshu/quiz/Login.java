@@ -135,6 +135,7 @@ public class Login extends AppCompatActivity {
                         editor.putString(name, nm);
                         editor.apply();
                         Intent i = new Intent(Login.this, MainActivity.class);
+                        Toast.makeText(Login.this,"Welcome, "+nm,Toast.LENGTH_LONG).show();
                         startActivity(i);
                         finish();
 

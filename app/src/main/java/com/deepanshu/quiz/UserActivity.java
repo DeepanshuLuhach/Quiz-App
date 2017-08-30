@@ -95,7 +95,6 @@ public class UserActivity extends AppCompatActivity {
         editor.clear();
         editor.apply();
         Intent intent = new Intent(UserActivity.this, Login.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
 

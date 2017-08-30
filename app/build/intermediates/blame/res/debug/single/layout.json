@@ -160,6 +160,10 @@
         "source": "/home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/res/layout/notification_template_part_chronometer.xml"
     },
     {
+        "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/display_result_user_listitem.xml",
+        "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/display_result_user_listitem.xml"
+    },
+    {
         "merged": "/home/deepanshu/AndroidStudioProjects/Quiz/app/build/intermediates/res/merged/debug/layout/activity_start_test.xml",
         "source": "/home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_start_test.xml"
     },

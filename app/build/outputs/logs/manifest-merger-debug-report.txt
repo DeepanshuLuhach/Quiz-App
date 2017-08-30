@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:2:1-44:12
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:2:1-37:12
 	package
 		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:3:5-33
 		INJECTED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManife
 	android:name
 		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:8:5-42:19
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:8:5-35:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/deepanshu/.android/build-cache/cfc818ffe3890c7acbc824053fa5ae0229370183/output/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:26.0.0-alpha1] /home/deepanshu/.android/build-cache/9750efc1489a8586b03bd47e421c3dd3f8cd9514/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /home/deepanshu/.android/build-cache/74424dff204257c2dee1dea782885dcc14093def/output/AndroidManifest.xml:29:5-20
@@ -49,7 +49,9 @@ MERGED from [com.android.support:support-compat:26.0.0-alpha1] /home/deepanshu/.
 	android:theme
 		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:14:9-40
 activity#com.deepanshu.quiz.Login
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:15:9-43
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:15:9-64
+	android:label
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:15:41-62
 	android:name
 		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:15:19-40
 activity#com.deepanshu.quiz.MainActivity
@@ -67,73 +69,79 @@ ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManife
 	android:name
 		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:20:27-74
 activity#com.deepanshu.quiz.Register
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:23:9-46
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:23:9-107
+	android:label
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:23:80-104
+	android:parentActivityName
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:23:44-79
 	android:name
 		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:23:19-43
 activity#com.deepanshu.quiz.QBDetails
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:24:9-47
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:24:9-90
+	android:parentActivityName
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:24:45-87
 	android:name
 		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:24:19-44
-activity#com.deepanshu.quiz.User_Admin
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:25:9-28:59
-	android:label
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:27:13-63
-	android:theme
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:28:13-56
-	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:26:13-39
 activity#com.deepanshu.quiz.Add_Questions
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:29:9-51
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:25:9-51
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:29:19-48
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:25:19-48
 activity#com.deepanshu.quiz.Result_User
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:30:9-49
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:26:9-114
+	android:label
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:26:47-69
+	android:parentActivityName
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:26:70-112
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:30:19-46
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:26:19-46
 activity#com.deepanshu.quiz.TestDetails
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:31:9-49
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:27:9-92
+	android:parentActivityName
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:27:47-89
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:31:19-46
-activity#com.deepanshu.quiz.ViewTests
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:32:9-47
-	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:32:19-44
-activity#com.deepanshu.quiz.ViewQuestionBank
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:33:9-54
-	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:33:19-51
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:27:19-46
 activity#com.deepanshu.quiz.DisplayQB
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:34:9-47
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:28:9-89
+	android:parentActivityName
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:28:45-87
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:34:19-44
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:28:19-44
 activity#com.deepanshu.quiz.DisplayTest
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:35:9-49
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:29:9-91
+	android:parentActivityName
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:29:47-89
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:35:19-46
-activity#com.deepanshu.quiz.DisplayTest_ListItem
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:36:9-58
-	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:36:19-55
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:29:19-46
 activity#com.deepanshu.quiz.UserActivity
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:37:9-50
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:30:9-50
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:37:19-47
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:30:19-47
 activity#com.deepanshu.quiz.StartTest
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:38:9-47
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:31:9-118
+	android:label
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:31:88-116
+	android:parentActivityName
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:31:45-87
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:38:19-44
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:31:19-44
 activity#com.deepanshu.quiz.Question
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:39:9-46
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:32:9-46
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:39:19-43
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:32:19-43
 activity#com.deepanshu.quiz.TestResult
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:40:9-48
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:33:9-68
+	android:label
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:33:46-66
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:40:19-45
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:33:19-45
 activity#com.deepanshu.quiz.AdminResults
-ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:41:9-59
+ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:34:9-116
+	android:label
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:34:48-71
+	android:parentActivityName
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:34:72-114
 	android:name
-		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:41:19-47
+		ADDED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml:34:19-47
 uses-sdk
 INJECTED from /home/deepanshu/AndroidStudioProjects/Quiz/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/deepanshu/.android/build-cache/cfc818ffe3890c7acbc824053fa5ae0229370183/output/AndroidManifest.xml:5:5-7:41

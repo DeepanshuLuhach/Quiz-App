@@ -32,7 +32,7 @@ class ResultUser_adapter extends RecyclerView.Adapter<ResultUser_adapter.ViewHol
 
     @Override
     public ResultUser_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.display_reuslt_user_listitem,parent,false);
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.display_result_user_listitem,parent,false);
 
         return new ResultUser_adapter.ViewHolder(v);
     }
@@ -55,21 +55,24 @@ class ResultUser_adapter extends RecyclerView.Adapter<ResultUser_adapter.ViewHol
 
         ArrayList<Entry> yvalues = new ArrayList<>();
         int x = Integer.parseInt(listItem.getTotalCor());
+        int y = Integer.parseInt(listItem.getTotalIncor());
+        int z = Integer.parseInt(listItem.getTotal())-Integer.parseInt(listItem.getTotalCor())-Integer.parseInt(listItem.getTotalIncor());
         if(x>0)
-        yvalues.add(new Entry(x, 0));//correct
-        x = Integer.parseInt(listItem.getTotalIncor());
-        if(x>0)
-        yvalues.add(new Entry(x, 1));//incorrect
-        x = Integer.parseInt(listItem.getTotal())-Integer.parseInt(listItem.getTotalCor())-Integer.parseInt(listItem.getTotalIncor());
-        if(x>0)
-        yvalues.add(new Entry(x, 2));//not attempted
+            yvalues.add(new Entry(x, 0));//correct
+        if(y>0)
+            yvalues.add(new Entry(x, 1));//incorrect
+        if(z>0)
+            yvalues.add(new Entry(x, 2));//not attempted
 
         PieDataSet dataSet;
         dataSet = new PieDataSet(yvalues, "");
         ArrayList<String> xvalues = new ArrayList<>();
-        xvalues.add("Correct");
-        xvalues.add("InCorrect");
-        xvalues.add("Not Attempted");
+        if(x>0)
+            xvalues.add("Correct");
+        if(y>0)
+            xvalues.add("InCorrect");
+        if(z>0)
+            xvalues.add("Not Attempted");
 
         PieData data = new PieData(xvalues, dataSet);
         data.setValueFormatter(new PercentFormatter());

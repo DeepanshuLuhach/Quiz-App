@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login" />
+        <activity android:name=".Login" android:label="Login"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,25 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" />
-        <activity android:name=".QBDetails" />
-        <activity
-            android:name=".User_Admin"
-            android:label="@string/title_activity_user__admin"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Register" android:parentActivityName=".Login" android:label="Register" />
+        <activity android:name=".QBDetails" android:parentActivityName=".MainActivity" />
         <activity android:name=".Add_Questions" />
-        <activity android:name=".Result_User" />
-        <activity android:name=".TestDetails" />
-        <activity android:name=".ViewTests" />
-        <activity android:name=".ViewQuestionBank" />
-        <activity android:name=".DisplayQB" />
-        <activity android:name=".DisplayTest" />
-        <activity android:name=".DisplayTest_ListItem" />
+        <activity android:name=".Result_User" android:label="Result" android:parentActivityName=".UserActivity"/>
+        <activity android:name=".TestDetails" android:parentActivityName=".MainActivity" />
+        <activity android:name=".DisplayQB" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".DisplayTest" android:parentActivityName=".MainActivity"/>
         <activity android:name=".UserActivity" />
-        <activity android:name=".StartTest" />
+        <activity android:name=".StartTest" android:parentActivityName=".UserActivity" android:label="Test Details"/>
         <activity android:name=".Question" />
-        <activity android:name=".TestResult" />
-        <activity android:name=".AdminResults"></activity>
+        <activity android:name=".TestResult" android:label="Test"/>
+        <activity android:name=".AdminResults" android:label="Results" android:parentActivityName=".UserActivity"/>
     </application>
 
 </manifest>

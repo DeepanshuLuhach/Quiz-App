@@ -64,9 +64,12 @@ public class TestResult extends AppCompatActivity {
         PieDataSet dataSet;
         dataSet = new PieDataSet(yvalues, "");
         ArrayList<String> xvalues = new ArrayList<>();
-        xvalues.add("Correct");
-        xvalues.add("InCorrect");
-        xvalues.add("Not Attempted");
+        if(correct>0)
+            xvalues.add("Correct");
+        if(incorrect>0)
+            xvalues.add("InCorrect");
+        if((total-correct-incorrect)>0)
+            xvalues.add("Not Attempted");
 
         PieData data = new PieData(xvalues, dataSet);
         data.setValueFormatter(new PercentFormatter());

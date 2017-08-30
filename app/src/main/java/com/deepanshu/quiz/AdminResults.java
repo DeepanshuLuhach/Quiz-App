@@ -141,12 +141,12 @@ public class AdminResults extends AppCompatActivity {
                 BarDataSet dataSet = new BarDataSet(yvalues,"Percentage Marks");
 
                 ArrayList<String> xvalues = new ArrayList<>();
-                xvalues.add("<20");
-                xvalues.add("<40");
-                xvalues.add("<60");
-                xvalues.add("<80");
-                xvalues.add("<90");
-                xvalues.add("<=100");
+                xvalues.add("0-20");
+                xvalues.add("20-40");
+                xvalues.add("40-60");
+                xvalues.add("60-80");
+                xvalues.add("80-90");
+                xvalues.add("90-100");
                 BarData bardata = new BarData(xvalues, dataSet);
                 barChart.setData(bardata);
                 barChart.setDescription("Student's Performance");

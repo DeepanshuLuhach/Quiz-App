@@ -127,8 +127,8 @@
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#ff0000</color>
+    <color name="colorPrimaryDark">#c20000</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
@@ -725,7 +725,6 @@
     <string name="negative_marks_for_wrong_answer">Negative Marks for wrong answer</string>
     <string name="next">Next</string>
     <string name="no">noooo</string>
-    <string name="not_registered_sign_up">Not Registered? Sign Up</string>
     <string name="option_a">Option A</string>
     <string name="option_b">Option B</string>
     <string name="option_c">Option C</string>
@@ -751,6 +750,7 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="select_correct_option">Select correct option :</string>
     <string name="select_question_bank">Select Question Bank :</string>
+    <string name="sign_up">Sign Up</string>
     <string name="start">Start</string>
     <string name="start_now">Start Now</string>
     <string name="start_stop">Start/Stop</string>
@@ -1822,6 +1822,11 @@
     </style>
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
+    </style>
+    <style name="CusstomTheme" parent="Theme.AppCompat.NoActionBar">
+        
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
