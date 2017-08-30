@@ -68,5 +68,6 @@
     <string name="result">Result</string>
     <string name="percentage">Percentage</string>
     <string name="score">Score</string>
+    <string name="unique_username">Unique Username</string>
 
 </resources>

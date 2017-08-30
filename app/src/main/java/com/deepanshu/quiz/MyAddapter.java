@@ -20,16 +20,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
 
-/**
- * Created by deepanshu on 26/7/17.
- */
-
-public class MyAddapter extends RecyclerView.Adapter<MyAddapter.ViewHolder>{
+class MyAddapter extends RecyclerView.Adapter<MyAddapter.ViewHolder>{
 
     private List<ListItem> listItems;
     private Context context;
 
-    public MyAddapter(List<ListItem> listItems, Context context) {
+    MyAddapter(List<ListItem> listItems, Context context) {
         this.listItems = listItems;
         this.context = context;
     }
@@ -76,14 +72,14 @@ public class MyAddapter extends RecyclerView.Adapter<MyAddapter.ViewHolder>{
         return listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView textViewQbid;
-        public TextView textViewQbname;
-        public ImageButton delete, show;
+        TextView textViewQbid;
+        TextView textViewQbname;
+        ImageButton delete, show;
 
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             textViewQbid = itemView.findViewById(R.id.textViewQbid);

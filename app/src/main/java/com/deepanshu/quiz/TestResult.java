@@ -4,30 +4,23 @@ package com.deepanshu.quiz;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
 public class TestResult extends AppCompatActivity {
 
-    private Button button;
-    private TextView scored;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +33,13 @@ public class TestResult extends AppCompatActivity {
         int score = Integer.parseInt(bundle.getString("Score"));
         double percent = Double.parseDouble(bundle.getString("Percentage"));
 
-        scored = (TextView) findViewById(R.id.score_testresult);
+        TextView scored = (TextView) findViewById(R.id.score_testresult);
         scored.setText("You scored "+score+" marks.\n Percentage : " + percent +" %") ;
 
         PieChart pieChart = (PieChart) findViewById(R.id.piechart);
         pieChart.setUsePercentValues(true);
 
-        button = (Button) findViewById(R.id.gotouser);
+        Button button = (Button) findViewById(R.id.gotouser);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,10 +49,6 @@ public class TestResult extends AppCompatActivity {
                 finish();
             }
         });
-        // IMPORTANT: In a PieChart, no values (Entry) should have the same
-        // xIndex (even if from different DataSets), since no values can be
-        // drawn above each other.
-
         pieChart.setDrawHoleEnabled(true);
         pieChart.setTransparentCircleRadius(30f);
         pieChart.setHoleRadius(50f);

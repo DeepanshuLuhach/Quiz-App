@@ -1212,10 +1212,11 @@ int string test_name_hint 0x7f07005c
 int string title_activity_user__admin 0x7f07005d
 int string topic 0x7f07005e
 int string topic_hint 0x7f07005f
-int string user 0x7f070060
-int string username 0x7f070061
-int string view_question_bank 0x7f070062
-int string view_test 0x7f070063
+int string unique_username 0x7f070060
+int string user 0x7f070061
+int string username 0x7f070062
+int string view_question_bank 0x7f070063
+int string view_test 0x7f070064
 int style AlertDialog_AppCompat 0x7f0900a2
 int style AlertDialog_AppCompat_Light 0x7f0900a3
 int style Animation_AppCompat_Dialog 0x7f0900a4

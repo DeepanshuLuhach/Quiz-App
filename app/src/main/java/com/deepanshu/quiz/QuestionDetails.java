@@ -1,12 +1,9 @@
 package com.deepanshu.quiz;
 
-/**
- * Created by deepanshu on 21/8/17.
- */
 
-public class QuestionDetails {
+class QuestionDetails {
     private String qid,question, answer,a,b,c,d;
-    public QuestionDetails() {
+    QuestionDetails() {
         this.qid = "";
         this.question = "";
         this.answer = "";

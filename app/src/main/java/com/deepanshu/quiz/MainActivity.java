@@ -3,13 +3,12 @@ package com.deepanshu.quiz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import static com.deepanshu.quiz.Login.MyPREFERENCES;
 import static com.deepanshu.quiz.Login.user_id;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String uid = sharedPreferences.getString(user_id,"0");
-        if(uid == "0")
+        if(uid.equals("0"))
         {
             logout();
         }
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent g = new Intent(MainActivity.this,UserActivity.class);
-                g.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                //g.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(g);
                 finish();
             }
@@ -106,6 +105,5 @@ public class MainActivity extends AppCompatActivity {
         finish();
 
         }
-
 
 }

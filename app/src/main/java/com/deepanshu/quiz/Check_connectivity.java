@@ -6,9 +6,6 @@ import android.net.NetworkInfo;
 
 import static java.lang.Boolean.FALSE;
 
-/**
- * Created by deepanshu on 24/7/17.
- */
 
 public class Check_connectivity {
 

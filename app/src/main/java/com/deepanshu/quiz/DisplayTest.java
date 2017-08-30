@@ -132,7 +132,7 @@ public class DisplayTest extends AppCompatActivity {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
                 String line;
-                StringBuffer jsonData = new StringBuffer();
+                StringBuilder jsonData = new StringBuilder();
 
                 //READ
                 while ((line = bufferedReader.readLine()) != null) {

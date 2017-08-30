@@ -1,9 +1,6 @@
 package com.deepanshu.quiz;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-public class ResultUser_ListItem  {
+class ResultUser_ListItem  {
     //result_id,auth_name,test_name,topic,total,total_cor,total_incor,score
     private String ResultId;
     private String Name;
@@ -14,7 +11,7 @@ public class ResultUser_ListItem  {
     private String TotalIncor;
     private String Score;
 
-    public ResultUser_ListItem(String result_id,String auth_name,String test_name,String topic,String total, String total_cor,String total_incor,String score) {
+    ResultUser_ListItem(String result_id, String auth_name, String test_name, String topic, String total, String total_cor, String total_incor, String score) {
         this.ResultId = result_id;
         this.Name = auth_name;
         this.Testname = test_name;

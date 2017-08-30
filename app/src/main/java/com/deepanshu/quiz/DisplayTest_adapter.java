@@ -21,13 +21,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
 
-import static com.deepanshu.quiz.Login.MyPREFERENCES;
-import static com.deepanshu.quiz.Login.user_id;
-
-/**
- * Created by deepanshu on 27/7/17.
- */
-
 class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewHolder> {
     private List<DisplayTest_ListItem> dt_listItems;
     Context context;

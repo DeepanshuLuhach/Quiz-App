@@ -1,18 +1,11 @@
 package com.deepanshu.quiz;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -20,20 +13,8 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.deepanshu.quiz.Login.MyPREFERENCES;
-import static com.deepanshu.quiz.Login.user_id;
-
-/**
- * Created by deepanshu on 27/7/17.
- */
 
 class AdminResults_adapter extends RecyclerView.Adapter<AdminResults_adapter.ViewHolder> {
     private List<AdminResults_ListItem> dt_listItems;

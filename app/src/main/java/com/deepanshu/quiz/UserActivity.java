@@ -29,7 +29,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent g = new Intent(UserActivity.this,MainActivity.class);
-                g.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                //g.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(g);
                 finish();
             }
@@ -101,5 +101,11 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(UserActivity.this,MainActivity.class);
+        startActivity(i);
+        finish();
+    }
 }
 

@@ -6,14 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -119,7 +117,7 @@ public class DisplayQB extends AppCompatActivity{
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
                 String line;
-                StringBuffer jsonData = new StringBuffer();
+                StringBuilder jsonData = new StringBuilder();
 
                 //READ
                 while ((line = bufferedReader.readLine()) != null) {

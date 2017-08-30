@@ -1,47 +1,31 @@
 package com.deepanshu.quiz;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.github.mikephil.charting.charts.PieChart;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by deepanshu on 27/7/17.
  */
 
-public class ResultUser_adapter extends RecyclerView.Adapter<ResultUser_adapter.ViewHolder> {
+class ResultUser_adapter extends RecyclerView.Adapter<ResultUser_adapter.ViewHolder> {
     private List<ResultUser_ListItem> dt_listItems;
     Context context;
-    public int status;
-    //public String stat[] = {"Start","Stop"};
-    public ResultUser_adapter(List<ResultUser_ListItem> listItems,Context context) {
+    ResultUser_adapter(List<ResultUser_ListItem> listItems, Context context) {
         this.dt_listItems = listItems;
         this.context = context;
     }
@@ -69,7 +53,7 @@ public class ResultUser_adapter extends RecyclerView.Adapter<ResultUser_adapter.
         holder.mScore.setText(pass);
         holder.pieChart.setUsePercentValues(true);
 
-        ArrayList<Entry> yvalues = new ArrayList<Entry>();
+        ArrayList<Entry> yvalues = new ArrayList<>();
         int x = Integer.parseInt(listItem.getTotalCor());
         if(x>0)
         yvalues.add(new Entry(x, 0));//correct
@@ -110,16 +94,16 @@ public class ResultUser_adapter extends RecyclerView.Adapter<ResultUser_adapter.
         return dt_listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView Testname;
-        public TextView Topicname;
-        public TextView mAuthname;
-        public TextView mScore;
+        TextView Testname;
+        TextView Topicname;
+        TextView mAuthname;
+        TextView mScore;
         PieChart pieChart;
 
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             Testname = itemView.findViewById(R.id.tv_test_name_result);

@@ -3,7 +3,6 @@ package com.deepanshu.quiz;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,23 +21,17 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import static android.R.attr.data;
-
-
-/**
- * Created by deepanshu on 25/7/17.
- */
 
 public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
 
     //JSON DOWNLOADER
 
-    Context c;
-    Spinner sp;
+    private Context c;
+    private Spinner sp;
     ProgressDialog pd;
-    int flag;
+    private int flag;
 
-    public JsonParser_testDetails(Context c, Spinner sp) {
+    JsonParser_testDetails(Context c, Spinner sp) {
         this.c = c;
         this.sp = sp;
         this.flag = 1;
@@ -67,11 +60,11 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
             String line;
-            StringBuffer jsonData = new StringBuffer();
+            StringBuilder jsonData = new StringBuilder();
 
             //READ
             while ((line = bufferedReader.readLine()) != null) {
-                jsonData.append(line + "\n");
+                jsonData.append(line).append("\n");
             }
 
             return jsonData.toString();
@@ -91,13 +84,13 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
 
 
     //JSON PARSER
-    public class Parser extends AsyncTask<Void, Void, Boolean> {
+    private class Parser extends AsyncTask<Void, Void, Boolean> {
 
         String jsonData;
         ArrayList<String> qbName = new ArrayList<>();
         ArrayList<String> qbId = new ArrayList<>();
 
-        public Parser(String jsonData) {
+        Parser(String jsonData) {
             this.jsonData = jsonData;
 
         }

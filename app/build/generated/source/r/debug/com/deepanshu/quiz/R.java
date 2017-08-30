@@ -3732,10 +3732,11 @@ containing a value of this type.
         public static final int title_activity_user__admin=0x7f07005d;
         public static final int topic=0x7f07005e;
         public static final int topic_hint=0x7f07005f;
-        public static final int user=0x7f070060;
-        public static final int username=0x7f070061;
-        public static final int view_question_bank=0x7f070062;
-        public static final int view_test=0x7f070063;
+        public static final int unique_username=0x7f070060;
+        public static final int user=0x7f070061;
+        public static final int username=0x7f070062;
+        public static final int view_question_bank=0x7f070063;
+        public static final int view_test=0x7f070064;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0900a2;

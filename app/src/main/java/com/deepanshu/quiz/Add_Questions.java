@@ -196,22 +196,7 @@ public class Add_Questions extends AppCompatActivity {
     private boolean fieldsvalidation() {
         return !mques.getText().toString().equals("") && !mopA.getText().toString().equals("") && !mopB.getText().toString().equals("") && !mopC.getText().toString().equals("") && !mopD.getText().toString().equals("");
     }
-/*
-    private void addListenertoSpinner() {
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> options, View view, int pos, long l) {
-                selectedOption = options.getItemAtPosition(pos).toString();
-                Toast.makeText(getBaseContext(),selectedOption,Toast.LENGTH_SHORT);
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> options) {
-                selectedOption = options.getItemAtPosition(0).toString();
-                Toast.makeText(getBaseContext(),selectedOption,Toast.LENGTH_SHORT);
-            }
-        });
-    }*/
 
     private class insertTask extends AsyncTask<String,String,String>
     {
@@ -236,7 +221,6 @@ public class Add_Questions extends AppCompatActivity {
             System.out.println("Inside Post-execute");
             super.onPostExecute(s);
             if ("valid".equals(s.trim())){
-                //Toast.makeText(Add_Questions.this,s,Toast.LENGTH_SHORT).show();
                 mques.getText().clear();
                 mopA.getText().clear();
                 mopB.getText().clear();

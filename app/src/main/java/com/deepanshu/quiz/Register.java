@@ -17,7 +17,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class Register extends AppCompatActivity {
-    EditText mname,memail,mpassword;
+    EditText mname,memail,mpassword, musername;
     Button mregister;
     ProgressDialog pd;
     @Override
@@ -27,7 +27,7 @@ public class Register extends AppCompatActivity {
         mname = (EditText) findViewById(R.id.etname);
         memail = (EditText) findViewById(R.id.etemail);
         mpassword = (EditText) findViewById(R.id.etpass);
-
+        musername = (EditText) findViewById(R.id.etusername);
         mregister = (Button) findViewById(R.id.btnRegister);
 
         mregister.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +40,7 @@ public class Register extends AppCompatActivity {
                     if(check.getInternetStatus())
                     {
                         RegisterTask r = new RegisterTask();
-                        r.execute(mname.getText().toString(),mpassword.getText().toString(),memail.getText().toString());
+                        r.execute(mname.getText().toString(),mpassword.getText().toString(),memail.getText().toString(), musername.getText().toString());
                     }
                     else{
                         Toast.makeText(Register.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
@@ -55,10 +55,10 @@ public class Register extends AppCompatActivity {
     }
 
     private boolean fieldsvalidation() {
-        return !mname.getText().toString().equals("") && !mpassword.getText().toString().equals("") && !memail.getText().toString().equals("");
+        return !mname.getText().toString().equals("") && !mpassword.getText().toString().equals("") && !memail.getText().toString().equals("")&& !musername.getText().toString().equals("");
     }
 
-    public class RegisterTask extends AsyncTask<String,String,String>
+    private class RegisterTask extends AsyncTask<String,String,String>
     {
 
         @Override
@@ -67,7 +67,7 @@ public class Register extends AppCompatActivity {
             super.onPreExecute();
             pd=new ProgressDialog(Register.this);
             pd.setTitle("Register");
-            pd.setMessage("Registering...Please wait");
+            pd.setMessage("Please wait...");
             pd.show();
         }
 
@@ -76,11 +76,15 @@ public class Register extends AppCompatActivity {
 
             super.onPostExecute(s);
             pd.dismiss();
-            Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
+
             if ("valid".equals(s.trim())){
+                Toast.makeText(getBaseContext(),"Registration Successful!!!",Toast.LENGTH_LONG).show();
                 Intent i = new Intent(Register.this, Login.class);
                 startActivity(i);
                 finish();
+            }
+            else {
+                Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
             }
 
 
@@ -90,10 +94,13 @@ public class Register extends AppCompatActivity {
         protected String doInBackground(String... strings) {
 
             try{
-                String username = strings[0];
+                String name = strings[0];
                 String password = strings[1];
                 String email = strings[2];
-                String data= URLEncoder.encode("username","UTF-8") + "=" +
+                String username = strings[3];
+                String data= URLEncoder.encode("name","UTF-8") + "=" +
+                        URLEncoder.encode(name,"UTF-8") + "&" +
+                        URLEncoder.encode("username","UTF-8") + "=" +
                         URLEncoder.encode(username,"UTF-8") + "&" +
                         URLEncoder.encode("password","UTF-8") + "=" +
                         URLEncoder.encode(password,"UTF-8") + "&" +
@@ -105,16 +112,14 @@ public class Register extends AppCompatActivity {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
                 String result;
-
                 result = bufferedReader.readLine();
-
                 return result;
 
             }catch(Exception e){
                 e.printStackTrace();
             }
 
-            return null;
+            return "Error Connecting to Server!!!";
         }
     }
 }

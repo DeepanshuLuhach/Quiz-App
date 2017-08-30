@@ -762,6 +762,7 @@
     <string name="title_activity_user__admin">User_Admin</string>
     <string name="topic">Topic :</string>
     <string name="topic_hint">Topic</string>
+    <string name="unique_username">Unique Username</string>
     <string name="user">User</string>
     <string name="username">username</string>
     <string name="view_question_bank">View Question Bank</string>
