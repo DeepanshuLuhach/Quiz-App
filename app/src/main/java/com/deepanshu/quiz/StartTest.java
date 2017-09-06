@@ -175,4 +175,3 @@ public class StartTest extends AppCompatActivity {
     }
 
 }
-//[{"QB_ID":"112","USER_ID":"1","ONLINE":"1","TEST_NAME":"test 1","TOPIC":"testing","DURATION":"1","name":"test","COR_MARKS":"5","INCOR_MARKS":"1"}]

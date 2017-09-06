@@ -67,8 +67,6 @@ public class Question extends AppCompatActivity {
 
         DateFormat df = new SimpleDateFormat("dd MM yyyy, HH:mm:ss");
         final String startTime = df.format(Calendar.getInstance().getTime());
-        Toast.makeText(Question.this,startTime,Toast.LENGTH_SHORT).show();
-
         FetchTask f = new FetchTask();        //get all questions in an list and set first question
         f.execute(qbid);
 
@@ -76,8 +74,7 @@ public class Question extends AppCompatActivity {
         //timer
 
         timed = (TextView) findViewById(R.id.tx_timed);
-        final long seconds =60;
-        CountDownTimer countDownTimer= new CountDownTimer(time*1000,1000) {
+        new CountDownTimer(time*1000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 long secondsInMilli = 1000;
@@ -116,37 +113,28 @@ public class Question extends AppCompatActivity {
             public void onClick(View view) {
                 grp=(RadioGroup)findViewById(R.id.rg_options);
                 ans=(RadioButton)findViewById(grp.getCheckedRadioButtonId());
-                //Toast.makeText(Question.this,ans.getText(),Toast.LENGTH_SHORT).show();
 
                 if(ans == null || ans.getText().equals("noooo"))
                 {
                     Toast.makeText(Question.this,"Skipped",Toast.LENGTH_SHORT).show();
                     skipped++;
-
                 }
                 else if(currentQuestion.getAnswer().equals(ans.getText()) && index <= quescount){
                     right++;
                 }
                 else if(!currentQuestion.getAnswer().equals(ans.getText()) && index <= quescount){
                     wrong++;
-                    System.out.println("Right Answer = "+currentQuestion.getAnswer()+" Attempted Answer = "+ans.getText());
                 }
-//                System.out.println("Right Answer = "+currentQuestion.getAnswer()+" Attempted Answer = "+ans.getText());
-                System.out.println("Right = "+right+" Wrong = "+wrong+" Skipped = "+(quescount-right-wrong));
 
                 if(index < quescount){
                     currentQuestion=quesList.get(index);
                     setQuestionView();
-//                    System.out.println(mopA.isChecked()+" "+mopB.isChecked()+" "+mopC.isChecked()+" "+mopD.isChecked()+" "+ans.isChecked());
-
                 }
                 else{
                     maxMarks = quescount*positive;
                     score = positive*right - negative*wrong;
                     if(score > 0)
                         percent= ((double)score/maxMarks)*100;
-
-                    Toast.makeText(Question.this,right+" "+wrong+" = "+score,Toast.LENGTH_SHORT).show();
 
                     DateFormat df = new SimpleDateFormat("dd MM yyyy, HH:mm:ss");
                     String endTime = df.format(Calendar.getInstance().getTime());
@@ -161,8 +149,7 @@ public class Question extends AppCompatActivity {
                         long days = (int) (difference / (1000*60*60*24));
                         long hours = (int) ((difference - (1000*60*60*24*days)) / (1000*60*60));
                         min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
-                        hours = (hours < 0 ? -hours : hours);
-                        Toast.makeText(Question.this,days+" "+hours+" "+min,Toast.LENGTH_SHORT).show();
+
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
@@ -238,7 +225,6 @@ public class Question extends AppCompatActivity {
             else if (!("error".equals(s.trim()))){
 
                 //set the data list of questions
-                //{"QUESTION_ID":"42","QUESTION":"first","A":"a","B":"b","C":"c","D":"d","CORRECT":"A"}
                 try {
                     quesList = new ArrayList<>();
                     quesList.clear();
@@ -311,7 +297,6 @@ public class Question extends AppCompatActivity {
                     jsonData.append(line).append("\n");
                 }
 
-                System.out.println(jsonData.toString());
                 return jsonData.toString();
 
 
@@ -344,7 +329,6 @@ public class Question extends AppCompatActivity {
             pd1.dismiss();
             super.onPostExecute(s);
             if ("valid".equals(s.trim())){
-                //Toast.makeText(Question.this,s,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Question.this, TestResult.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Total", String.valueOf(quescount));
@@ -399,7 +383,6 @@ public class Question extends AppCompatActivity {
                 String result;
 
                 result = bufferedReader.readLine();
-                System.out.println("Inside Do-in-Background");
                 return result;
 
 

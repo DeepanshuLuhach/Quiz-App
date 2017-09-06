@@ -49,8 +49,6 @@ public class DisplayTest extends AppCompatActivity {
         else{
             Toast.makeText(DisplayTest.this,"Internet Connection Problem",Toast.LENGTH_LONG).show();
         }
-
-
     }
 
     private class DisplayTask extends AsyncTask<String,Void,String> {
@@ -86,16 +84,12 @@ public class DisplayTest extends AppCompatActivity {
 
                 for (int i = 0; i < ja.length(); i++) {
                     jo = ja.getJSONObject(i);
-
-                    //{"TEST_ID":"2","QB_ID":"2","USER_ID":"1","ONLINE":"1","TEST_NAME":"dbms2","TOPIC":"sql","DURATION":"2"},
-
                     String test_id = jo.getString("TEST_ID");
                     String qb_id = jo.getString("QB_ID");
                     String status = jo.getString("ONLINE");
                     String tname = jo.getString("TEST_NAME");
                     String topic = jo.getString("TOPIC");
                     String duration = jo.getString("DURATION");
-                    //String testId, String testName, String testTopic, String testDuration, String testQBId, String testAvailability
                     DisplayTest_ListItem qb = new DisplayTest_ListItem(test_id,tname,topic,duration,qb_id,status);
                     data.add(qb);
                 }
@@ -108,12 +102,12 @@ public class DisplayTest extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
                 Toast.makeText(DisplayTest.this,"Unable to fetch Data",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(DisplayTest.this,MainActivity.class));//new line
+                startActivity(new Intent(DisplayTest.this,MainActivity.class));
                 finish();
             }catch (Exception e){
                 e.printStackTrace();
                 Toast.makeText(DisplayTest.this,"Unable to connect",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(DisplayTest.this,MainActivity.class));//new line
+                startActivity(new Intent(DisplayTest.this,MainActivity.class));
                 finish();
             }
 

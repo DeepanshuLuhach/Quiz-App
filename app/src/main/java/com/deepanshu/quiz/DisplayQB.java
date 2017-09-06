@@ -137,7 +137,7 @@ public class DisplayQB extends AppCompatActivity{
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(DisplayQB.this,MainActivity.class));//new line
+        startActivity(new Intent(DisplayQB.this,MainActivity.class));
         finish();
     }
 }

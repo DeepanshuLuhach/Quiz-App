@@ -109,16 +109,12 @@ class MyAddapter extends RecyclerView.Adapter<MyAddapter.ViewHolder>{
 
             super.onPostExecute(s);
             pd.dismiss();
-
-            if(s.trim().equals("")){
-                Toast.makeText(context,"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
-            }
-            else if (!("error".equals(s.trim()))){
+            if (!("error".equals(s.trim()))){
                 Toast.makeText(context,"Delete Successful",Toast.LENGTH_SHORT).show();
             }
             else
             {
-                Toast.makeText(context,"Error : "+s,Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
             }
             Intent gb = new Intent(context,DisplayQB.class);
             gb.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -142,7 +138,6 @@ class MyAddapter extends RecyclerView.Adapter<MyAddapter.ViewHolder>{
                 String result;
 
                 result = bufferedReader.readLine();
-                System.out.println("result "+result);
                 if(result == null)
                     return "";
                 return result;
@@ -153,7 +148,7 @@ class MyAddapter extends RecyclerView.Adapter<MyAddapter.ViewHolder>{
                 e.printStackTrace();
             }
 
-            return "";
+            return "error";
         }
     }
 }

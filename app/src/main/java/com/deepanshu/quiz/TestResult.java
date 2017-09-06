@@ -53,21 +53,17 @@ public class TestResult extends AppCompatActivity {
         pieChart.setTransparentCircleRadius(30f);
         pieChart.setHoleRadius(50f);
 
-        ArrayList<Entry> yvalues = new ArrayList<Entry>();
-        if(correct>0)
-            yvalues.add(new Entry(correct,0));//correct
-        if(incorrect>0)
-            yvalues.add(new Entry(incorrect, 1));//incorrect
+        ArrayList<Entry> yvalues = new ArrayList<>();
+        yvalues.add(new Entry(correct,0));//correct
+        yvalues.add(new Entry(incorrect, 1));//incorrect
         if((total-correct-incorrect)>0)
             yvalues.add(new Entry(total-correct-incorrect,2));//not attempted
 
         PieDataSet dataSet;
         dataSet = new PieDataSet(yvalues, "");
         ArrayList<String> xvalues = new ArrayList<>();
-        if(correct>0)
-            xvalues.add("Correct");
-        if(incorrect>0)
-            xvalues.add("InCorrect");
+        xvalues.add("Correct");
+        xvalues.add("InCorrect");
         if((total-correct-incorrect)>0)
             xvalues.add("Not Attempted");
 

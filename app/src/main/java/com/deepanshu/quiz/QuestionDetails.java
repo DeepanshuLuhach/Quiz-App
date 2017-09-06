@@ -13,16 +13,6 @@ class QuestionDetails {
         this.d = "";
     }
 
-    public QuestionDetails(String qid, String question, String answer, String a, String b, String c, String d) {
-        this.qid = qid;
-        this.question = question;
-        this.answer = answer;
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
-    }
-
     public String getQid() {
         return qid;
     }

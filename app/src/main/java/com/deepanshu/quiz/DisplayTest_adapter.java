@@ -161,15 +161,12 @@ class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewH
             super.onPostExecute(s);
             pd.dismiss();
 
-            if(s.trim().equals("")){
-                Toast.makeText(context,"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
-            }
-            else if (!("error".equals(s.trim()))){
+            if (!("error".equals(s.trim()))){
                 Toast.makeText(context,"Update Successful",Toast.LENGTH_SHORT).show();
             }
             else
             {
-                Toast.makeText(context,"Error : "+s,Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
             }
         }
 
@@ -191,7 +188,6 @@ class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewH
                 String result;
 
                 result = bufferedReader.readLine();
-                System.out.println("result "+result);
                 return result;
 
 
@@ -200,7 +196,7 @@ class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewH
                 e.printStackTrace();
             }
 
-            return null;
+            return "error";
         }
     }
 
@@ -225,15 +221,12 @@ class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewH
             super.onPostExecute(s);
             pd.dismiss();
 
-            if(s.trim().equals("")){
-                Toast.makeText(context,"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
-            }
-            else if (!("error".equals(s.trim()))){
+           if (!("error".equals(s.trim()))){
                 Toast.makeText(context,"Delete Successful",Toast.LENGTH_SHORT).show();
             }
             else
             {
-                Toast.makeText(context,"Error : "+s,Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Check your internet connectivity!!!",Toast.LENGTH_LONG).show();
             }
             Intent gb = new Intent(context,DisplayTest.class);
             gb.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -257,7 +250,6 @@ class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewH
                 String result;
 
                 result = bufferedReader.readLine();
-                System.out.println("result "+result);
                 if(result == null)
                     return "";
                 return result;
@@ -268,7 +260,7 @@ class DisplayTest_adapter extends RecyclerView.Adapter<DisplayTest_adapter.ViewH
                 e.printStackTrace();
             }
 
-            return "";
+            return "error";
         }
     }
 }

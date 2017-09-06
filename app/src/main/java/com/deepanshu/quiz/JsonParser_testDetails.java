@@ -146,8 +146,6 @@ public class JsonParser_testDetails extends AsyncTask<String,Void,String> {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
                         TestDetails.qbid = qbId.get(pos);
-                        //Toast.makeText(c, TestDetails.qbid, Toast.LENGTH_SHORT).show();
-
                     }
 
                     @Override

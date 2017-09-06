@@ -1,7 +1,6 @@
 package com.deepanshu.quiz;
 
 class ResultUser_ListItem  {
-    //result_id,auth_name,test_name,topic,total,total_cor,total_incor,score
     private String ResultId;
     private String Name;
     private String Testname;

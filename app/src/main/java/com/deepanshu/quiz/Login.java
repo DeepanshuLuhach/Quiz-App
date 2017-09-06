@@ -123,7 +123,7 @@ public class Login extends AppCompatActivity {
                         JSONObject jo;
                         int len = ja.length();
                         if(len == 0){
-                            Toast.makeText(Login.this,"To access the app you have to register first!!!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,"To access the app you have to sign up first!!!",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this,Register.class));
                             finish();
                         }
@@ -181,12 +181,7 @@ public class Login extends AppCompatActivity {
                     jsonData.append(line).append("\n");
                 }
 
-                System.out.println(jsonData.toString());
                 return jsonData.toString();
-            /*    String result;
-                result = bufferedReader.readLine();
-                return result;
-            */
             }catch(Exception e){
                 e.printStackTrace();
             }

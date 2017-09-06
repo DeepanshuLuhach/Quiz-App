@@ -113,7 +113,6 @@ public class TestDetails extends AppCompatActivity {
             pd1.setMessage("Please wait...");
             pd1.setCancelable(false);
             pd1.setCanceledOnTouchOutside(false);
-            System.out.println("Inside Pre-execute");
             pd1.show();
 
         }
@@ -125,8 +124,8 @@ public class TestDetails extends AppCompatActivity {
             try {
                 if (s.equals("not valid")) {
                     Toast.makeText(getBaseContext(), "Check your internet connectivity!!!", Toast.LENGTH_LONG).show();
-                } else {
-                    //Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
+                }
+                else {
                     if(!("not valid".equals(s.trim()))) {
                         Intent intent = new Intent(TestDetails.this,MainActivity.class);
                         startActivity(intent);

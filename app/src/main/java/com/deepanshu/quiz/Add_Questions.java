@@ -44,26 +44,29 @@ public class Add_Questions extends AppCompatActivity {
         //Saving question Bank details
         Bundle bundle = getIntent().getExtras();
         calling = bundle.getString("Parent");
-        Toast.makeText(Add_Questions.this,calling,Toast.LENGTH_SHORT).show();
-        if(calling.equals("QBDetails")){
-            String qbName = bundle.getString("Name");
-            String posMarks = bundle.getString("posM");
-            String negMarks = bundle.getString("negM");
-            Toast.makeText(Add_Questions.this,"Inside",Toast.LENGTH_SHORT).show();
-            flag = 1;
-            SaveTask s = new SaveTask();
-            s.execute(qbName, posMarks, negMarks);
-            if(flag == 0)
-            {
-                Toast.makeText(Add_Questions.this,"Could not save the Quesion Bank details",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Add_Questions.this,QBDetails.class));
-                finish();
+        if (calling != null) {
+            if(calling.equals("QBDetails")){
+                String qbName = bundle.getString("Name");
+                String posMarks = bundle.getString("posM");
+                String negMarks = bundle.getString("negM");
+                flag = 1;
+                SaveTask s = new SaveTask();
+                s.execute(qbName, posMarks, negMarks);
+                if(flag == 0)
+                {
+                    Toast.makeText(Add_Questions.this,"Could not save the Quesion Bank details",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Add_Questions.this,QBDetails.class));
+                    finish();
+                }
+            }
+            else {
+                quesB_id = bundle.getString("qbid");
             }
         }
-        else {
-            quesB_id = bundle.getString("qbid");
-            Toast.makeText(Add_Questions.this,"Other One",Toast.LENGTH_SHORT).show();
-            Toast.makeText(Add_Questions.this,quesB_id,Toast.LENGTH_SHORT).show();
+        else{
+            Toast.makeText(Add_Questions.this,"We have encountered some error!!!",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Add_Questions.this,MainActivity.class));
+            finish();
         }
 
         submitflag = 0;
@@ -104,7 +107,6 @@ public class Add_Questions extends AppCompatActivity {
                         answer = mopD.getText().toString();
                         break;
                 }
-                Toast.makeText(getBaseContext(),answer,Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -124,12 +126,8 @@ public class Add_Questions extends AppCompatActivity {
                         answer = mopD.getText().toString();
                         break;
                 }
-                Toast.makeText(getBaseContext(),answer,Toast.LENGTH_SHORT).show();
             }
         });
-
-        /*if(fieldsvalidation())
-            madd.setEnabled(true);*/
 
         madd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,14 +209,12 @@ public class Add_Questions extends AppCompatActivity {
             pd1.setMessage("Please wait...");
             pd1.setCancelable(false);
             pd1.setCanceledOnTouchOutside(false);
-            System.out.println("Inside Pre-execute");
             pd1.show();
         }
 
         @Override
         protected void onPostExecute(String s) {
             pd1.dismiss();
-            System.out.println("Inside Post-execute");
             super.onPostExecute(s);
             if ("valid".equals(s.trim())){
                 mques.getText().clear();
@@ -282,7 +278,6 @@ public class Add_Questions extends AppCompatActivity {
                 String result;
 
                 result = bufferedReader.readLine();
-                System.out.println("Inside Do-in-Background");
                 return result;
 
 
@@ -320,7 +315,6 @@ public class Add_Questions extends AppCompatActivity {
             if (!("error".equals(s.trim()))){
 
                 quesB_id = s.trim();
-                //Toast.makeText(getBaseContext(),quesB_id,Toast.LENGTH_SHORT).show();
                 mques.getText().clear();
                 mopA.getText().clear();
                 mopB.getText().clear();
@@ -365,7 +359,6 @@ public class Add_Questions extends AppCompatActivity {
                 String result;
 
                 result = bufferedReader.readLine();
-                System.out.println("result "+result);
                 if(result == null)
                     return "error";
                 return result;

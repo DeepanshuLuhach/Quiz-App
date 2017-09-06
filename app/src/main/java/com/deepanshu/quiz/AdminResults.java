@@ -59,8 +59,6 @@ public class AdminResults extends AppCompatActivity {
 
     }
 
-
-
     private class FetchTask extends AsyncTask<String,Void,String> {
 
         ProgressDialog pd = new ProgressDialog(AdminResults.this);
@@ -94,8 +92,6 @@ public class AdminResults extends AppCompatActivity {
 
                 for (int i = 0; i < ja.length(); i++) {
                     jo = ja.getJSONObject(i);
-
-                    //{"RESULT_ID":"36","name":"ajay","TEST_NAME":"OS-TEST-1","TOPIC":"Deadlock","TOTAL":"5","TOTAL_COR":"3","TOTAL_INCOR":"1","SCORE":"11","PERCENTAGE":"0"},
                     if(i == 0)
                     {
                         String tname = jo.getString("TEST_NAME");
@@ -111,7 +107,6 @@ public class AdminResults extends AppCompatActivity {
                     String score = jo.getString("SCORE");
                     String percentage = jo.getString("PERCENTAGE");
                     int p = (int) Double.parseDouble(percentage);
-                    System.out.println(p);
                     if(p >= 90)
                         x6++;
                     else if(p >= 80)
@@ -124,9 +119,7 @@ public class AdminResults extends AppCompatActivity {
                         x2++;
                     else if(p >= 0)
                         x1++;
-                    System.out.println(x1+ " "+x2+ " "+x3+ " "+x4+ " "+x5+ " "+x6);
 
-                    //String testId, String testName, String testTopic, String testDuration, String testQBId, String testAvailability
                     AdminResults_ListItem qb = new AdminResults_ListItem(resultId, name, total, correct, incorrect, score, percentage);
                     data.add(qb);
                 }

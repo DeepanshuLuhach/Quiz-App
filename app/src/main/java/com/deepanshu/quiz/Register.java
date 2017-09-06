@@ -84,7 +84,7 @@ public class Register extends AppCompatActivity {
                 finish();
             }
             else {
-                Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
+                Toast.makeText(Register.this,s,Toast.LENGTH_LONG).show();
             }
 
 
